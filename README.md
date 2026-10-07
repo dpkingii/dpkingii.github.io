@@ -1,6 +1,6 @@
 # myPortfolio
 
-Lianyu (Nick) Peng's personal site. Built with Next.js and Tailwind CSS, deployed on Vercel.
+Lianyu (Nick) Peng's personal site. Built with Next.js and Tailwind CSS, deployed to GitHub Pages at https://dpkingii.github.io by the workflow in `.github/workflows/deploy.yml` on every push to `main`.
 
 ```bash
 npm install

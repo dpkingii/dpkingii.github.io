@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  // Static export for GitHub Pages: no server, so no image optimizer or Cache Components.
+  output: "export",
+  images: { unoptimized: true },
   turbopack: {
     rules: {
       "*.css": {
