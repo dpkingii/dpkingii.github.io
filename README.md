@@ -1,5 +1,10 @@
 # myPortfolio
 
-A simple portfolio page with html and css.
+Lianyu (Nick) Peng's personal site. Built with Next.js and Tailwind CSS, deployed on Vercel.
 
-https://dpkingii.github.io/myPortfolio/
+```bash
+npm install
+npm run dev
+```
+
+Site content (experience, projects, education, skills) lives in `app/content.ts`.

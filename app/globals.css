@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f3f1ed;
+  --card: #ffffff;
+  --line: #e3ded6;
+  --ink: #1c1b18;
+  --muted: #6d675e;
+  --accent: #8c1b2b;
+  --accent-hover: #e21833;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: #0f0e0d;
+    --card: #1a1917;
+    --line: #2f2c28;
+    --ink: #ece8e1;
+    --muted: #a39d93;
+    --accent: #ff6b7d;
+    --accent-hover: #ff9aa6;
+  }
+
+  /* The night sky: two star tiles at different sizes so the repeat isn't obvious. */
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  body::before {
+    background-image:
+      radial-gradient(1px 1px at 23px 41px, rgb(255 255 255 / 0.7), transparent),
+      radial-gradient(1px 1px at 141px 87px, rgb(255 255 255 / 0.5), transparent),
+      radial-gradient(1.5px 1.5px at 212px 171px, rgb(255 255 255 / 0.8), transparent),
+      radial-gradient(1px 1px at 297px 33px, rgb(255 255 255 / 0.4), transparent),
+      radial-gradient(1px 1px at 68px 236px, rgb(255 255 255 / 0.6), transparent),
+      radial-gradient(1.5px 1.5px at 331px 262px, rgb(255 214 220 / 0.6), transparent);
+    background-size: 370px 310px;
+    opacity: 0.55;
+  }
+
+  body::after {
+    background-image:
+      radial-gradient(1px 1px at 97px 129px, rgb(255 255 255 / 0.5), transparent),
+      radial-gradient(1.5px 1.5px at 403px 58px, rgb(255 255 255 / 0.7), transparent),
+      radial-gradient(1px 1px at 251px 389px, rgb(255 255 255 / 0.5), transparent),
+      radial-gradient(1px 1px at 488px 301px, rgb(214 226 255 / 0.6), transparent);
+    background-size: 530px 470px;
+    opacity: 0.5;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --font-sans: var(--font-source-sans);
+  --font-display: var(--font-raleway);
+}
+
+html {
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
