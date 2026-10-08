@@ -4,6 +4,7 @@ import quietplatePopup from "@/public/projects/quietplate-popup.png";
 import OutsideWork from "./components/OutsideWork";
 import ProfRatingCharts from "./components/ProfRatingCharts";
 import QuietPlateDemo from "./components/QuietPlateDemo";
+import ThemeToggle from "./components/ThemeToggle";
 import {
   education,
   experience,
@@ -46,6 +47,7 @@ export default function Home() {
               </a>
             ))}
           </nav>
+          <ThemeToggle />
         </div>
       </header>
 

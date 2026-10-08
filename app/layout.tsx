@@ -21,7 +21,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${raleway.variable} ${sourceSans.variable} antialiased`}>
+    <html
+      lang="en"
+      className={`${raleway.variable} ${sourceSans.variable} antialiased`}
+      suppressHydrationWarning
+    >
+      <head>
+        {/* Apply a saved theme choice before first paint so there's no flash of the wrong theme. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`,
+          }}
+        />
+      </head>
       <body className="min-h-screen font-sans">{children}</body>
     </html>
   );

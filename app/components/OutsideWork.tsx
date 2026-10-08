@@ -96,8 +96,10 @@ function Sports() {
         <circle cx="12" cy="12" r="10" fill="var(--card)" />
         <path d="M11.1 7.1a16.55 16.55 0 0 1 10.9 4M12 12a12.6 12.6 0 0 1-8.7 5M16.8 13.6a16.55 16.55 0 0 1-9 7.5M20.7 17a12.8 12.8 0 0 0-8.7-5 13.3 13.3 0 0 1 0-10M6.3 3.8a16.55 16.55 0 0 0 1.9 11.5" />
       </g>
-      <rect x="78" y="70" width="8" height="22" rx="3" fill="#a07850" transform="rotate(-20 82 81)" />
-      <circle cx="86" cy="58" r="16" fill="var(--accent)" />
+      <g transform="rotate(25 86 56)">
+        <rect x="82" y="66" width="8" height="26" rx="3" fill="#a07850" />
+        <circle cx="86" cy="56" r="16" fill="var(--accent)" />
+      </g>
       <circle cx="106" cy="38" r="4" fill="#fff" stroke="var(--muted)" strokeWidth="1.2" />
       <g fill="none" stroke="var(--muted)" strokeWidth="1.6" strokeLinejoin="round">
         <path d="M124 84 116 48h32l-8 36z" fill="var(--card)" />

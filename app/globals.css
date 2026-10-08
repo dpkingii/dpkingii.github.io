@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: light;
   --bg: #f3f1ed;
   --card: #ffffff;
   --line: #e3ded6;
@@ -8,10 +9,14 @@
   --muted: #6d675e;
   --accent: #8c1b2b;
   --accent-hover: #e21833;
+  --stars: 0;
+  --show-sun: none;
+  --show-moon: block;
 }
 
+/* Dark follows the system unless the visitor picked light with the toggle. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     color-scheme: dark;
     --bg: #0f0e0d;
     --card: #1a1917;
@@ -20,39 +25,56 @@
     --muted: #a39d93;
     --accent: #ff6b7d;
     --accent-hover: #ff9aa6;
+    --stars: 1;
+    --show-sun: block;
+    --show-moon: none;
   }
+}
 
-  /* The night sky: two star tiles at different sizes so the repeat isn't obvious. */
-  body::before,
-  body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-  }
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f0e0d;
+  --card: #1a1917;
+  --line: #2f2c28;
+  --ink: #ece8e1;
+  --muted: #a39d93;
+  --accent: #ff6b7d;
+  --accent-hover: #ff9aa6;
+  --stars: 1;
+  --show-sun: block;
+  --show-moon: none;
+}
 
-  body::before {
-    background-image:
-      radial-gradient(1px 1px at 23px 41px, rgb(255 255 255 / 0.7), transparent),
-      radial-gradient(1px 1px at 141px 87px, rgb(255 255 255 / 0.5), transparent),
-      radial-gradient(1.5px 1.5px at 212px 171px, rgb(255 255 255 / 0.8), transparent),
-      radial-gradient(1px 1px at 297px 33px, rgb(255 255 255 / 0.4), transparent),
-      radial-gradient(1px 1px at 68px 236px, rgb(255 255 255 / 0.6), transparent),
-      radial-gradient(1.5px 1.5px at 331px 262px, rgb(255 214 220 / 0.6), transparent);
-    background-size: 370px 310px;
-    opacity: 0.55;
-  }
+/* The night sky: two star tiles at different sizes so the repeat isn't obvious. Only shows in dark. */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
 
-  body::after {
-    background-image:
-      radial-gradient(1px 1px at 97px 129px, rgb(255 255 255 / 0.5), transparent),
-      radial-gradient(1.5px 1.5px at 403px 58px, rgb(255 255 255 / 0.7), transparent),
-      radial-gradient(1px 1px at 251px 389px, rgb(255 255 255 / 0.5), transparent),
-      radial-gradient(1px 1px at 488px 301px, rgb(214 226 255 / 0.6), transparent);
-    background-size: 530px 470px;
-    opacity: 0.5;
-  }
+body::before {
+  background-image:
+    radial-gradient(1px 1px at 23px 41px, rgb(255 255 255 / 0.7), transparent),
+    radial-gradient(1px 1px at 141px 87px, rgb(255 255 255 / 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 212px 171px, rgb(255 255 255 / 0.8), transparent),
+    radial-gradient(1px 1px at 297px 33px, rgb(255 255 255 / 0.4), transparent),
+    radial-gradient(1px 1px at 68px 236px, rgb(255 255 255 / 0.6), transparent),
+    radial-gradient(1.5px 1.5px at 331px 262px, rgb(255 214 220 / 0.6), transparent);
+  background-size: 370px 310px;
+  opacity: calc(0.55 * var(--stars));
+}
+
+body::after {
+  background-image:
+    radial-gradient(1px 1px at 97px 129px, rgb(255 255 255 / 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 403px 58px, rgb(255 255 255 / 0.7), transparent),
+    radial-gradient(1px 1px at 251px 389px, rgb(255 255 255 / 0.5), transparent),
+    radial-gradient(1px 1px at 488px 301px, rgb(214 226 255 / 0.6), transparent);
+  background-size: 530px 470px;
+  opacity: calc(0.5 * var(--stars));
 }
 
 @theme inline {
