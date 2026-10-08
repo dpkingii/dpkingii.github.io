@@ -1,6 +1,7 @@
 import Image from "next/image";
 import avatar from "@/public/avatar.jpeg";
 import quietplatePopup from "@/public/projects/quietplate-popup.png";
+import OutsideWork from "./components/OutsideWork";
 import ProfRatingCharts from "./components/ProfRatingCharts";
 import QuietPlateDemo from "./components/QuietPlateDemo";
 import {
@@ -16,6 +17,7 @@ import {
 
 const sections = [
   { id: "about", label: "About" },
+  { id: "outside", label: "Outside work" },
   { id: "projects", label: "Projects" },
   { id: "experience", label: "Experience" },
   { id: "leadership", label: "Leadership" },
@@ -52,6 +54,10 @@ export default function Home() {
 
         <main className="mt-8 space-y-8 lg:mt-0">
           <About />
+
+          <Section id="outside" title="Outside of Work">
+            <OutsideWork />
+          </Section>
 
           <Section id="projects" title="Projects">
             {projects.map((p) => (
@@ -193,9 +199,8 @@ function About() {
             1,200+ node network.
           </p>
           <p>
-            Outside of code, I love hearing people&rsquo;s stories, I&rsquo;ll go a long way for a good bowl of Asian
-            noodles, and I like staring up at the night sky. I find joy in making daily tasks a
-            little more efficient, which is how most of my side projects start.
+            Outside of code, I love hearing people&rsquo;s stories, and I find joy in making daily
+            tasks a little more efficient, which is how most of my side projects start.
           </p>
           <p className="text-muted">
             The best way to reach me is{" "}
