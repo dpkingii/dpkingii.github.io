@@ -1,5 +1,6 @@
 import Image from "next/image";
 import avatar from "@/public/avatar.jpeg";
+import fakeArtistDrawing from "@/public/projects/fake-artist-drawing.jpg";
 import quietplatePopup from "@/public/projects/quietplate-popup.png";
 import OutsideWork from "./components/OutsideWork";
 import ProfRatingCharts from "./components/ProfRatingCharts";
@@ -291,7 +292,14 @@ function ProjectCard({ project: p }: { project: Project }) {
     <Card>
       <CardHeader title={p.name} subtitle={p.tagline} meta={p.dates} />
       <div className="border-b border-line px-6 py-6 sm:px-8">
-        {p.slug === "quietplate" ? (
+        {p.slug === "fake-artist" ? (
+          <Image
+            src={fakeArtistDrawing}
+            alt="Fake Artist mid-game, with players drawing on a shared canvas"
+            className="w-full rounded-md border border-line"
+            sizes="(min-width: 768px) 40rem, 100vw"
+          />
+        ) : p.slug === "quietplate" ? (
           <div className="grid items-center gap-6 md:grid-cols-[1fr_12rem]">
             <QuietPlateDemo />
             <Image
@@ -310,6 +318,7 @@ function ProjectCard({ project: p }: { project: Project }) {
         <p className="border-l-2 border-accent pl-4 leading-relaxed text-muted">{p.highlight}</p>
       </div>
       <CardFooter tags={p.tags}>
+        {p.live && <ButtonLink href={p.live}>Play it</ButtonLink>}
         <ButtonLink href={p.repo}>GitHub repo</ButtonLink>
         {p.slides && <ButtonLink href={p.slides}>Slide deck</ButtonLink>}
       </CardFooter>

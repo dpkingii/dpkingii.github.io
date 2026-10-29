@@ -75,18 +75,32 @@ export const experience: Job[] = [
 ];
 
 export type Project = {
-  slug: "quietplate" | "professor-rating";
+  slug: "fake-artist" | "quietplate" | "professor-rating";
   name: string;
   tagline: string;
   dates: string;
   description: string;
   highlight: string;
   repo: string;
+  live?: string;
   slides?: string;
   tags: string[];
 };
 
 export const projects: Project[] = [
+  {
+    slug: "fake-artist",
+    name: "Fake Artist",
+    tagline: "Multiplayer web game",
+    dates: "Fall 2026",
+    description:
+      "A drawing and deduction game for up to 8 players, played remotely with a room code or on one shared device. Everyone adds to one canvas, but the fake artist only knows the category and has to bluff. Three modes (ink budget, free whiteboard, one stroke each) plus timers and a vote to finish.",
+    highlight:
+      "The Node and WebSocket server owns all game state and sends each player a filtered view, so the fake artist never receives the secret word. The wire protocol is one shared TypeScript module used by both the React client and the server, and 14 Vitest integration tests play full games over real sockets. Shipped in Docker with GitHub Actions CI on Render.",
+    repo: "https://github.com/dpkingii/fake-artist",
+    live: "https://fake-artist-0awa.onrender.com/",
+    tags: ["React", "TypeScript", "Node.js", "WebSockets", "Docker", "Vitest"],
+  },
   {
     slug: "quietplate",
     name: "QuietPlate",
