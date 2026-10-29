@@ -59,19 +59,6 @@ export const experience: Job[] = [
     ],
     tags: ["Next.js", "React", "Node.js", "PostgreSQL", "Prisma"],
   },
-  {
-    role: "Operations Intern",
-    org: "Chosan",
-    location: "Rockville, MD",
-    dates: "May – Aug 2024",
-    logo: "/logos/chosan.png",
-    summary: "Coordinated 3 property build-outs that added $72,000 in annual revenue.",
-    bullets: [
-      "Coordinated 3 property build-out projects across cross-functional teams, managing timelines through Jira and contributing to $72,000 in added annual revenue.",
-      "Kept 16 clients and 12 internal team members aligned on project scope and requirements by coordinating meeting agendas and updates through Jira and Google Chat.",
-    ],
-    tags: ["Jira", "Google Chat"],
-  },
 ];
 
 export type Project = {
