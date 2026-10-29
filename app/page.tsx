@@ -2,6 +2,7 @@ import Image from "next/image";
 import avatar from "@/public/avatar.jpeg";
 import fakeArtistDrawing from "@/public/projects/fake-artist-drawing.jpg";
 import quietplatePopup from "@/public/projects/quietplate-popup.png";
+import umdCalendar from "@/public/projects/umd-calendar.jpg";
 import OutsideWork from "./components/OutsideWork";
 import ProfRatingCharts from "./components/ProfRatingCharts";
 import QuietPlateDemo from "./components/QuietPlateDemo";
@@ -303,6 +304,13 @@ function ProjectCard({ project: p }: { project: Project }) {
             className="w-full rounded-md border border-line"
             sizes="(min-width: 768px) 40rem, 100vw"
           />
+        ) : p.slug === "umd-calendar" ? (
+          <Image
+            src={umdCalendar}
+            alt="UMD Calendar showing a countdown to Thanksgiving Recess and upcoming academic dates"
+            className="w-full rounded-md border border-line"
+            sizes="(min-width: 768px) 40rem, 100vw"
+          />
         ) : p.slug === "quietplate" ? (
           <div className="grid items-center gap-6 md:grid-cols-[1fr_12rem]">
             <QuietPlateDemo />
@@ -322,7 +330,7 @@ function ProjectCard({ project: p }: { project: Project }) {
         <p className="border-l-2 border-accent pl-4 leading-relaxed text-muted">{p.highlight}</p>
       </div>
       <CardFooter tags={p.tags}>
-        {p.live && <ButtonLink href={p.live}>Play it</ButtonLink>}
+        {p.live && <ButtonLink href={p.live}>{p.slug === "fake-artist" ? "Play it" : "Try it"}</ButtonLink>}
         <ButtonLink href={p.repo}>GitHub repo</ButtonLink>
         {p.slides && <ButtonLink href={p.slides}>Slide deck</ButtonLink>}
       </CardFooter>

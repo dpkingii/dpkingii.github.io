@@ -75,7 +75,7 @@ export const experience: Job[] = [
 ];
 
 export type Project = {
-  slug: "fake-artist" | "quietplate" | "professor-rating";
+  slug: "fake-artist" | "umd-calendar" | "quietplate" | "professor-rating";
   name: string;
   tagline: string;
   description: string;
@@ -98,6 +98,18 @@ export const projects: Project[] = [
     repo: "https://github.com/dpkingii/fake-artist",
     live: "https://fake-artist-0awa.onrender.com/",
     tags: ["React", "TypeScript", "Node.js", "WebSockets", "Docker", "Vitest"],
+  },
+  {
+    slug: "umd-calendar",
+    name: "UMD Calendar",
+    tagline: "Full-stack web app",
+    description:
+      "A subscribable calendar of UMD breaks, finals, and term dates with reminders you choose. Add it to Google or Apple Calendar once and it keeps itself up to date.",
+    highlight:
+      "A FastAPI backend scrapes the UMD Academic Catalog and builds an iCalendar feed for each subscriber's settings. Feeds share one cached copy of the events, so it scrapes UMD about once a day no matter how many people subscribe, and anonymous subscriber counts go to Supabase.",
+    repo: "https://github.com/dpkingii/umd-calendar",
+    live: "https://umd-calendar-tau.vercel.app",
+    tags: ["Next.js", "TypeScript", "FastAPI", "Python", "Supabase", "Vercel"],
   },
   {
     slug: "quietplate",
