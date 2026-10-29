@@ -59,7 +59,7 @@ export default function Home() {
         <main className="mt-8 space-y-8 lg:mt-0">
           <About />
 
-          <Section id="outside" title="Outside of Work">
+          <Section id="outside" title="When I&rsquo;m not in front of my computer">
             <OutsideWork />
           </Section>
 
@@ -190,21 +190,17 @@ function About() {
         </div>
         <div className="max-w-3xl space-y-4 px-6 py-6 leading-relaxed sm:px-8 md:py-8">
           <p>
-            I&rsquo;m a computer science student at the University of Maryland who builds{" "}
-            <strong>full-stack and agentic AI software</strong>. This past summer I was a
-            software engineer intern at <strong>Visa</strong>, where I reworked the access
-            control for an agentic AI workforce planning app.
+            I&rsquo;m a software engineer studying Computer Science at the University of Maryland.
+            I keep ending up on the authorization side of things: who is allowed to do what, and
+            how to prove nothing else slipped through. This past summer I interned at{" "}
+            <strong>Visa</strong>, reworking access control for an agentic AI workforce planning
+            app.
           </p>
           <p>
-            I keep ending up on the authorization side of things: who is allowed to do what,
-            and how to prove nothing else slipped through. Before Visa I built the storage
-            layer for a quantum computing education app, automated property syncing at a
-            startup, and run authentication and Linux support across the UMD CS department&rsquo;s
-            1,200+ node network.
-          </p>
-          <p>
-            Outside of code, I love hearing people&rsquo;s stories, and I find joy in making daily
-            tasks a little more efficient, which is how most of my side projects start.
+            On the side, I build frontends for fun, usually for projects that make a daily task a
+            little more efficient. Something about turning an idea in my head into an interface
+            people can actually use just makes me happy. I also love hearing people&rsquo;s stories,
+            often over a pickup game or a good bowl of noodles.
           </p>
           <p className="text-muted">
             The best way to reach me is{" "}
