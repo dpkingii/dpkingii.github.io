@@ -241,7 +241,7 @@ function CardHeader({
 }: {
   title: string;
   subtitle: string;
-  meta: string;
+  meta?: string;
   logo?: string;
 }) {
   return (
@@ -264,14 +264,18 @@ function CardHeader({
           <p className="mt-2 font-display text-[0.7rem] tracking-[0.2em] text-muted uppercase">
             {subtitle}
           </p>
-          <p className="mt-2 font-display text-[0.7rem] tracking-[0.2em] text-muted uppercase sm:hidden">
-            {meta}
-          </p>
+          {meta && (
+            <p className="mt-2 font-display text-[0.7rem] tracking-[0.2em] text-muted uppercase sm:hidden">
+              {meta}
+            </p>
+          )}
         </div>
       </div>
-      <div className="hidden w-60 items-center justify-end border-l border-line px-8 py-6 text-right font-display text-[0.7rem] tracking-[0.2em] whitespace-nowrap text-muted uppercase sm:flex">
-        {meta}
-      </div>
+      {meta && (
+        <div className="hidden w-60 items-center justify-end border-l border-line px-8 py-6 text-right font-display text-[0.7rem] tracking-[0.2em] whitespace-nowrap text-muted uppercase sm:flex">
+          {meta}
+        </div>
+      )}
     </div>
   );
 }
@@ -290,7 +294,7 @@ function CardFooter({ tags, children }: { tags: string[]; children?: React.React
 function ProjectCard({ project: p }: { project: Project }) {
   return (
     <Card>
-      <CardHeader title={p.name} subtitle={p.tagline} meta={p.dates} />
+      <CardHeader title={p.name} subtitle={p.tagline} />
       <div className="border-b border-line px-6 py-6 sm:px-8">
         {p.slug === "fake-artist" ? (
           <Image

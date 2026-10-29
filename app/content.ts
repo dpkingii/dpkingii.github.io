@@ -78,7 +78,6 @@ export type Project = {
   slug: "fake-artist" | "quietplate" | "professor-rating";
   name: string;
   tagline: string;
-  dates: string;
   description: string;
   highlight: string;
   repo: string;
@@ -92,7 +91,6 @@ export const projects: Project[] = [
     slug: "fake-artist",
     name: "Fake Artist",
     tagline: "Multiplayer web game",
-    dates: "Fall 2026",
     description:
       "A drawing and deduction game for up to 8 players, played remotely with a room code or on one shared device. Everyone adds to one canvas, but the fake artist only knows the category and has to bluff. Three modes (ink budget, free whiteboard, one stroke each) plus timers and a vote to finish.",
     highlight:
@@ -105,7 +103,6 @@ export const projects: Project[] = [
     slug: "quietplate",
     name: "QuietPlate",
     tagline: "Chrome extension",
-    dates: "Spring 2026",
     description:
       "Hides calorie numbers on restaurant menu sites. A regex pass catches the plain cases, and two more passes handle menus that split the number and unit apart: across sibling elements like Starbucks, or across text nodes inside one element like Shake Shack. A MutationObserver rescans as single-page menus load new items.",
     highlight:
@@ -117,7 +114,6 @@ export const projects: Project[] = [
     slug: "professor-rating",
     name: "Professor Rating Predictor",
     tagline: "Machine learning",
-    dates: "Spring 2025",
     description:
       "Pulls 3,000+ UMD professors and 8,000+ reviews from the PlanetTerp API and predicts their star rating from grade distributions, the GPA students expect based on reviews, and VADER sentiment over the review text.",
     highlight:
