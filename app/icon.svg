@@ -1,4 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="10" fill="#8C1B2B"/>
-  <text x="32" y="42" font-family="Helvetica, Arial, sans-serif" font-size="26" font-weight="800" letter-spacing="2" fill="#F5F2EC" text-anchor="middle">LP</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="12 -9 140 140">
+  <style>
+    .bowl { fill: #8c1b2b; }
+    .sticks { stroke: #1c1b18; }
+    .steam { stroke: #6d675e; }
+    @media (prefers-color-scheme: dark) {
+      .bowl { fill: #ff6b7d; }
+      .sticks { stroke: #ece8e1; }
+      .steam { stroke: #a39d93; }
+    }
+  </style>
+  <g fill="none" stroke-linecap="round">
+    <path class="steam" d="M62 34c-6-6 6-10 0-16M80 30c-6-6 6-10 0-16M98 34c-6-6 6-10 0-16" stroke-width="7" />
+    <path class="sticks" d="M100 54 148 16M108 56 152 24" stroke-width="8" />
+    <path d="M30 58c8-9 14 6 22-3s14 6 22-3 14 6 22-3 14 6 22-3 14 6 22-3" stroke="#e8c27a" stroke-width="8" />
+  </g>
+  <path class="bowl" d="M18 58h124a62 46 0 0 1-124 0z" />
+  <rect class="bowl" x="58" y="102" width="44" height="10" rx="3" />
 </svg>
