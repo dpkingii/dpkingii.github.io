@@ -192,10 +192,9 @@ function About() {
           <p>
             I&rsquo;m a software engineer studying Computer Science at the University of Maryland.
             I keep ending up on the authorization side of things: who is allowed to do what, and
-            how to prove nothing else slipped through. This past summer I interned at{" "}
-            <strong>Visa</strong>, reworking access control for an agentic AI workforce planning
-            app. Before that, I got the opportunity to work at two startups,{" "}
-            <strong>Qubi</strong> and <strong>Chosan</strong>.
+            how to prove nothing else slipped through. This past summer I interned at Visa,
+            reworking access control for an agentic AI workforce planning app. Before that, I got
+            the opportunity to work at two startups, Qubi and Chosan.
           </p>
           <p>
             On the side, I build frontends for fun, usually for projects that make a daily task a
