@@ -94,7 +94,7 @@ export const projects: Project[] = [
     description:
       "A drawing and deduction game for up to 8 players, played remotely with a room code or on one shared device. Everyone adds to one canvas, but the fake artist only knows the category and has to bluff. Three modes (ink budget, free whiteboard, one stroke each) plus timers and a vote to finish.",
     highlight:
-      "The Node and WebSocket server owns all game state and sends each player a filtered view, so the fake artist never receives the secret word. The wire protocol is one shared TypeScript module used by both the React client and the server, and 14 Vitest integration tests play full games over real sockets. Shipped in Docker with GitHub Actions CI on Render.",
+      "The server owns all game state and sends each player a filtered view, so the fake artist never receives the secret word. Client and server share one TypeScript protocol module, and 14 Vitest integration tests play full games over real sockets.",
     repo: "https://github.com/dpkingii/fake-artist",
     live: "https://fake-artist-0awa.onrender.com/",
     tags: ["React", "TypeScript", "Node.js", "WebSockets", "Docker", "Vitest"],
@@ -106,7 +106,7 @@ export const projects: Project[] = [
     description:
       "Built for people with eating disorders or disordered eating, for whom a calorie count next to every menu item can turn ordering into counting and push them away from what they actually want to eat. QuietPlate hides those numbers on restaurant menu sites as you browse, so the menu is just food again.",
     highlight:
-      "A regex pass catches the plain cases, and two more passes handle menus that split the number and unit apart: across sibling elements like Starbucks, or across text nodes inside one element like Shake Shack, where each node is blanked in place so React's virtual DOM stays intact. A MutationObserver rescans as menus load new items. All scanning happens in the browser, and 21 Vitest tests run the content script and popup against jsdom.",
+      "Many menus split the number from the word \"calories,\" across separate elements or text nodes, so a plain regex misses them. QuietPlate handles both cases, blanking text in place so React-rendered menus don't break, and rescans as new items load. Everything runs in the browser, with 21 Vitest tests against jsdom.",
     repo: "https://github.com/dpkingii/quietplate",
     tags: ["JavaScript", "Manifest V3", "Vitest"],
   },
@@ -117,7 +117,7 @@ export const projects: Project[] = [
     description:
       "Pulls 3,000+ UMD professors and 8,000+ reviews from the PlanetTerp API and predicts their star rating from grade distributions, the GPA students expect based on reviews, and VADER sentiment over the review text.",
     highlight:
-      "Linear regression, random forest, and support vector regression were each scored with 10-fold cross-validation on the same held-out split. SVR did best at R² 0.62, with plain linear regression right behind at 0.61, so most of the signal is linear.",
+      "Compared linear regression, random forest, and SVR with 10-fold cross-validation. SVR scored best at R² 0.62, but plain linear regression hit 0.61, so most of the signal is linear.",
     repo: "https://github.com/dpkingii/PredictingProfessorRating",
     slides:
       "https://docs.google.com/presentation/d/1ZMibFFO4Uu8lSp2cKLQP4mOkvs8rS6rBQGHvfSQlXj0/edit?usp=sharing",
