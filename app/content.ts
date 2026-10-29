@@ -104,9 +104,9 @@ export const projects: Project[] = [
     name: "QuietPlate",
     tagline: "Chrome extension",
     description:
-      "Hides calorie numbers on restaurant menu sites. A regex pass catches the plain cases, and two more passes handle menus that split the number and unit apart: across sibling elements like Starbucks, or across text nodes inside one element like Shake Shack. A MutationObserver rescans as single-page menus load new items.",
+      "Built for people with eating disorders or disordered eating, for whom a calorie count next to every menu item can turn ordering into counting and push them away from what they actually want to eat. QuietPlate hides those numbers on restaurant menu sites as you browse, so the menu is just food again.",
     highlight:
-      "The Shake Shack case blanks each text node in place instead of merging them, so React's virtual DOM stays intact. All scanning happens in the browser, and 21 Vitest tests run the content script and popup against jsdom.",
+      "A regex pass catches the plain cases, and two more passes handle menus that split the number and unit apart: across sibling elements like Starbucks, or across text nodes inside one element like Shake Shack, where each node is blanked in place so React's virtual DOM stays intact. A MutationObserver rescans as menus load new items. All scanning happens in the browser, and 21 Vitest tests run the content script and popup against jsdom.",
     repo: "https://github.com/dpkingii/quietplate",
     tags: ["JavaScript", "Manifest V3", "Vitest"],
   },
