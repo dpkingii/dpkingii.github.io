@@ -185,7 +185,7 @@ function About() {
       <Card>
         <div className="border-b border-line px-6 py-8 sm:px-8">
           <h2 className="font-display text-xl font-extrabold tracking-[0.2em] uppercase sm:text-2xl">
-            Hi, I&rsquo;m Lianyu. Call me Nick.
+            Hi, I&rsquo;m Lianyu. Call me Nick!
           </h2>
         </div>
         <div className="max-w-3xl space-y-4 px-6 py-6 leading-relaxed sm:px-8 md:py-8">
@@ -194,13 +194,13 @@ function About() {
             I keep ending up on the authorization side of things: who is allowed to do what, and
             how to prove nothing else slipped through. This past summer I interned at Visa,
             reworking access control for an agentic AI workforce planning app. Before that, I got
-            the opportunity to work at two startups, Qubi and Chosan.
+            to work at two startups, Qubi and Chosan.
           </p>
           <p>
             On the side, I build frontends for fun, usually for projects that make a daily task a
             little more efficient. Something about turning an idea in my head into an interface
             people can actually use just makes me happy. I also love hearing people&rsquo;s stories,
-            often over a pickup game or a good bowl of noodles.
+            often over a pickup game or a good bowl of noodles!
           </p>
           <p className="text-muted">
             The best way to reach me is{" "}
