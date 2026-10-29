@@ -115,9 +115,9 @@ export const projects: Project[] = [
     name: "Professor Rating Predictor",
     tagline: "Machine learning",
     description:
-      "Pulls 3,000+ UMD professors and 8,000+ reviews from the PlanetTerp API and predicts their star rating from grade distributions, the GPA students expect based on reviews, and VADER sentiment over the review text.",
+      "Pulls 4,000+ UMD professors and 36,000+ reviews from the PlanetTerp API and predicts their star rating from grade distributions, the GPA students expect based on reviews, and VADER sentiment over the review text.",
     highlight:
-      "Compared linear regression, random forest, and SVR with 10-fold cross-validation. SVR scored best at R² 0.62, but plain linear regression hit 0.61, so most of the signal is linear.",
+      "Compared linear regression, random forest, KNN, and SVR with 10-fold cross-validation. KNN scored best at R² 0.63 and cut error 39% against a mean baseline, but plain linear regression hit 0.61, so most of the signal is linear.",
     repo: "https://github.com/dpkingii/PredictingProfessorRating",
     slides:
       "https://docs.google.com/presentation/d/1ZMibFFO4Uu8lSp2cKLQP4mOkvs8rS6rBQGHvfSQlXj0/edit?usp=sharing",
