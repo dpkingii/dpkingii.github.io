@@ -14,23 +14,7 @@
   --show-moon: block;
 }
 
-/* Dark follows the system unless the visitor picked light with the toggle. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    color-scheme: dark;
-    --bg: #0f0e0d;
-    --card: #1a1917;
-    --line: #2f2c28;
-    --ink: #ece8e1;
-    --muted: #a39d93;
-    --accent: #ff6b7d;
-    --accent-hover: #ff9aa6;
-    --stars: 1;
-    --show-sun: block;
-    --show-moon: none;
-  }
-}
-
+/* Light by default. Dark only when the visitor picks it with the toggle. */
 :root[data-theme="dark"] {
   color-scheme: dark;
   --bg: #0f0e0d;
