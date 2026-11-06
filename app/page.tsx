@@ -1,6 +1,7 @@
 import Image from "next/image";
 import avatar from "@/public/avatar.jpeg";
 import fakeArtistDrawing from "@/public/projects/fake-artist-drawing.jpg";
+import layerupToday from "@/public/projects/layerup-today.jpg";
 import quietplatePopup from "@/public/projects/quietplate-popup.png";
 import umdCalendar from "@/public/projects/umd-calendar.jpg";
 import OutsideWork from "./components/OutsideWork";
@@ -293,7 +294,14 @@ function ProjectCard({ project: p }: { project: Project }) {
     <Card>
       <CardHeader title={p.name} subtitle={p.tagline} />
       <div className="border-b border-line px-6 py-6 sm:px-8">
-        {p.slug === "fake-artist" ? (
+        {p.slug === "layerup" ? (
+          <Image
+            src={layerupToday}
+            alt="Layerup suggesting a crewneck, black jeans, and boots for dinner out, drawn as a layered mannequin"
+            className="w-full rounded-md border border-line"
+            sizes="(min-width: 768px) 40rem, 100vw"
+          />
+        ) : p.slug === "fake-artist" ? (
           <Image
             src={fakeArtistDrawing}
             alt="Fake Artist mid-game, with players drawing on a shared canvas"
@@ -303,7 +311,7 @@ function ProjectCard({ project: p }: { project: Project }) {
         ) : p.slug === "umd-calendar" ? (
           <Image
             src={umdCalendar}
-            alt="UMD Calendar showing a countdown to Thanksgiving Recess and upcoming academic dates"
+            alt="UMD Calendar landing page with options for events, terms, and reminders, and an Add to Google Calendar button"
             className="w-full rounded-md border border-line"
             sizes="(min-width: 768px) 40rem, 100vw"
           />
@@ -326,7 +334,7 @@ function ProjectCard({ project: p }: { project: Project }) {
         <p className="border-l-2 border-accent pl-4 leading-relaxed text-muted">{p.highlight}</p>
       </div>
       <CardFooter tags={p.tags}>
-        {p.live && <ButtonLink href={p.live}>{p.slug === "fake-artist" ? "Play it" : "Try it"}</ButtonLink>}
+        {p.live && <ButtonLink href={p.live}>{p.slug === "fake-artist" ? "Play it" : p.slug === "layerup" ? "Try the demo" : "Try it"}</ButtonLink>}
         <ButtonLink href={p.repo}>GitHub repo</ButtonLink>
         {p.slides && <ButtonLink href={p.slides}>Slide deck</ButtonLink>}
       </CardFooter>

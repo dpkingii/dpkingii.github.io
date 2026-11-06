@@ -62,7 +62,7 @@ export const experience: Job[] = [
 ];
 
 export type Project = {
-  slug: "fake-artist" | "umd-calendar" | "quietplate" | "professor-rating";
+  slug: "layerup" | "fake-artist" | "umd-calendar" | "quietplate" | "professor-rating";
   name: string;
   tagline: string;
   description: string;
@@ -74,6 +74,18 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: "layerup",
+    name: "Layerup",
+    tagline: "AI stylist web app",
+    description:
+      "Tell it your plans and it builds an outfit from photos of your own clothes, layered for the hours you'll actually be outside. Swipe any piece to swap it, or ask for \"warmer\" or \"dressier\" and the next outfit keeps your swaps. A one-click guest demo comes with a seeded closet.",
+    highlight:
+      "Gemini returns a schema-validated outfit built only from item ids in your closet, and a 503 fails over instantly to a backup model so the chat never hangs. Background removal runs in the browser in a Web Worker, and guests get an isolated closet, a 10-request AI cap enforced in Postgres, and a daily cleanup cron.",
+    repo: "https://github.com/dpkingii/layerup",
+    live: "https://layerup-woad.vercel.app",
+    tags: ["Next.js", "TypeScript", "Supabase", "Gemini", "ONNX Runtime", "Vercel"],
+  },
   {
     slug: "fake-artist",
     name: "Fake Artist",
@@ -91,9 +103,9 @@ export const projects: Project[] = [
     name: "UMD Calendar",
     tagline: "Full-stack web app",
     description:
-      "A subscribable calendar of UMD breaks, finals, and term dates with reminders you choose. Add it to Google or Apple Calendar once and it keeps itself up to date.",
+      "A subscribable calendar of UMD breaks, finals, and term dates with reminders you choose. Pick what to include, add it to Google or Apple Calendar once, and it keeps itself up to date. No account, name, or email.",
     highlight:
-      "A FastAPI backend scrapes the UMD Academic Catalog and builds an iCalendar feed for each subscriber's settings. Feeds share one cached copy of the events, so it scrapes UMD about once a day no matter how many people subscribe, and anonymous subscriber counts go to Supabase.",
+      "A FastAPI backend scrapes the UMD Academic Catalog and builds an iCalendar feed for each subscriber's settings. Feeds share one cached copy of the events, so it scrapes UMD about once a day no matter how many people subscribe. Anonymous feed fetches and button clicks go to insert-only Supabase tables, and the page shows a subscriber count once it passes 50.",
     repo: "https://github.com/dpkingii/umd-calendar",
     live: "https://umd-calendar-tau.vercel.app",
     tags: ["Next.js", "TypeScript", "FastAPI", "Python", "Supabase", "Vercel"],
