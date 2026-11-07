@@ -6,7 +6,7 @@ import quietplatePopup from "@/public/projects/quietplate-popup.png";
 import umdCalendar from "@/public/projects/umd-calendar.jpg";
 import type { Project } from "../content";
 import { BarChart, models } from "./ProfRatingCharts";
-import RelayAuthzVisual, { RelayAuthzCheck } from "./RelayAuthzVisual";
+import RelayAuthzVisual, { RelayAuthzDiagram } from "./RelayAuthzVisual";
 
 const shots: Partial<Record<Project["slug"], { src: StaticImageData; alt: string }>> = {
   layerup: {
@@ -107,7 +107,13 @@ export function ProjectFrame({
           />
         </div>
       ) : p.slug === "relay-authz" ? (
-        <div className="w-full">{compact ? <RelayAuthzCheck /> : <RelayAuthzVisual />}</div>
+        compact ? (
+          <RelayAuthzDiagram />
+        ) : (
+          <div className="w-full">
+            <RelayAuthzVisual />
+          </div>
+        )
       ) : (
         <div className="w-full">
           <BarChart title="R² by model" rows={models} />

@@ -24,7 +24,7 @@ export default function Projects() {
               <ProjectFrame
                 project={p}
                 sizes="(min-width: 1024px) 44rem, 100vw"
-                className="border border-line bg-card"
+                className="border border-line bg-card lg:self-stretch"
               />
               <div>
                 <ProjectInfo project={p} />
