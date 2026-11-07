@@ -11,7 +11,7 @@ const sections = [
 export default function SiteHeader() {
   return (
     <header className="sticky top-0 z-10 border-b border-line bg-card/90 backdrop-blur">
-      <div className="flex overflow-x-auto">
+      <div className="flex overflow-x-auto overscroll-x-contain">
         <NavLink
           href="/"
           className="shrink-0 border-r border-line px-6 py-4 font-display text-xs font-extrabold tracking-[0.25em] uppercase"

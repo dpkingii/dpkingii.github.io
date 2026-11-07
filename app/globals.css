@@ -10,8 +10,6 @@
   --accent: #8c1b2b;
   --accent-hover: #6b1421;
   --stars: 0;
-  --show-sun: none;
-  --show-moon: block;
 }
 
 /* Light by default. Dark only when the visitor picks it with the toggle. */
@@ -25,8 +23,6 @@
   --accent: #e0808c;
   --accent-hover: #eda5ae;
   --stars: 1;
-  --show-sun: block;
-  --show-moon: none;
 }
 
 /* The night sky: two star tiles at different sizes so the repeat isn't obvious. Only shows in dark. */
@@ -82,6 +78,26 @@ html {
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
+  }
+}
+
+.theme-icon {
+  grid-area: 1 / 1;
+  transition-property: opacity, scale, filter;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+:root:not([data-theme="dark"]) .theme-sun,
+:root[data-theme="dark"] .theme-moon {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root:not([data-theme="dark"]) .theme-sun,
+  :root[data-theme="dark"] .theme-moon {
+    scale: 0.25;
+    filter: blur(4px);
   }
 }
 

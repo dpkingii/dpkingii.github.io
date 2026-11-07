@@ -160,12 +160,15 @@ export function ProjectCard({
   horizontal?: boolean;
 }) {
   return (
-    <article className={`border border-line bg-card ${horizontal ? "md:grid md:grid-cols-2" : "flex flex-col"}`}>
+    // Side-by-side cards share the parent grid's rows, so the line under each frame sits at the same height.
+    <article
+      className={`border border-line bg-card ${horizontal ? "md:grid md:grid-cols-2" : "row-span-2 grid grid-rows-subgrid gap-0"}`}
+    >
       <ProjectFrame
         project={p}
         sizes={sizes}
         compact={horizontal}
-        className={`border-b border-line ${horizontal ? "md:border-r md:border-b-0" : ""}`}
+        className={`border-b border-line ${horizontal ? "md:border-r md:border-b-0" : "w-full min-w-0 self-stretch"}`}
       />
       <div className={`px-6 py-6 sm:px-8 ${horizontal ? "flex flex-col justify-center" : ""}`}>
         <ProjectInfo project={p} />
@@ -181,7 +184,7 @@ export function ButtonLink({ href, primary, children }: { href: string; primary?
   return (
     <Tag
       href={href}
-      className={`inline-block border px-5 py-2.5 text-sm font-semibold transition-colors ${
+      className={`inline-block border px-5 py-2.5 text-sm font-semibold transition-[color,background-color,border-color,scale] duration-150 ease-out motion-safe:active:scale-[0.96] [-webkit-tap-highlight-color:transparent] ${
         primary
           ? "border-accent bg-accent text-card hover:border-accent-hover hover:bg-accent-hover"
           : "border-line hover:border-accent hover:text-accent"

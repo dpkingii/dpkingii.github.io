@@ -157,7 +157,7 @@ function About() {
           </p>
           <p className="text-muted">
             The best way to reach me is{" "}
-            <a href={links.linkedin} className="text-accent underline-offset-4 hover:underline">
+            <a href={links.linkedin} className="text-accent underline-offset-4 hover:text-accent-hover hover:underline">
               LinkedIn
             </a>
             .
