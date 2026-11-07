@@ -5,7 +5,7 @@ import layerupToday from "@/public/projects/layerup-today.jpg";
 import quietplatePopup from "@/public/projects/quietplate-popup.png";
 import umdCalendar from "@/public/projects/umd-calendar.jpg";
 import type { Project } from "../content";
-import { BarChart, models } from "./ProfRatingCharts";
+import ProfSearchDiagram from "./ProfSearchVisual";
 import RelayAuthzVisual, { RelayAuthzDiagram } from "./RelayAuthzVisual";
 
 const shots: Partial<Record<Project["slug"], { src: StaticImageData; alt: string }>> = {
@@ -90,9 +90,9 @@ export function ProjectFrame({
       href={p.live ?? p.repo}
       tabIndex={-1}
       aria-hidden="true"
-      // The relay-authz diagram is wide and short, so a 16:10 frame would leave it floating in empty space.
+      // The diagrams are shorter than a 16:10 frame, so it would leave them floating in empty space.
       className={`@container relative flex items-center justify-center p-6 ${compact ? "" : "sm:p-8"} ${
-        compact || p.slug === "relay-authz" ? "" : "aspect-[16/10]"
+        compact || !shot ? "" : "aspect-[16/10]"
       } ${className}`}
     >
       {shot && compact ? (
@@ -115,9 +115,7 @@ export function ProjectFrame({
           </div>
         )
       ) : (
-        <div className="w-full">
-          <BarChart title="R² by model" rows={models} />
-        </div>
+        <ProfSearchDiagram />
       )}
     </a>
   );
@@ -138,7 +136,6 @@ export function ProjectLinks({ project: p }: { project: Project }) {
       <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm font-semibold">
         {p.live && <TextLink href={p.live}>Live ↗</TextLink>}
         <TextLink href={p.repo}>GitHub ↗</TextLink>
-        {p.slides && <TextLink href={p.slides}>Slides ↗</TextLink>}
       </div>
       <p className="mt-3 text-sm text-muted">{p.tags.join(" · ")}</p>
     </>

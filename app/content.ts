@@ -62,7 +62,7 @@ export const experience: Job[] = [
 ];
 
 export type Project = {
-  slug: "layerup" | "relay-authz" | "fake-artist" | "umd-calendar" | "quietplate" | "professor-rating";
+  slug: "layerup" | "relay-authz" | "prof-search" | "fake-artist" | "umd-calendar" | "quietplate";
   name: string;
   tagline: string;
   summary: string;
@@ -70,7 +70,6 @@ export type Project = {
   notes?: string;
   repo: string;
   live?: string;
-  slides?: string;
   tags: string[];
   featured?: boolean;
 };
@@ -83,7 +82,7 @@ export const projects: Project[] = [
     summary:
       "A Zanzibar-style authorization service in Go that checks access through nested groups and folders. Its Redis cache held a 12.6 ms p99 at 8,000 checks/s.",
     description:
-      "A relationship-based authorization service modeled on Google's Zanzibar paper. It answers \"can this user do this action on this object?\" by walking relation tuples in PostgreSQL through nested groups and parent folders, and \"what can this user access?\" with a reverse lookup that takes 7 queries instead of 45,760. Revision tokens keep revoked access from being served out of the Redis cache.",
+      "A relationship-based authorization service modeled on Google's Zanzibar paper. It answers \"can this user do this?\" by walking nested groups and folders in PostgreSQL, and \"what can this user access?\" in 7 queries instead of 45,760. Revision tokens keep revoked access out of the Redis cache.",
     notes:
       "Google's production system stores trillions of tuples in Spanner, replicated across data centers, and caches shared subproblems. This runs on a single database with no sharding or replication, and caches only whole checks.",
     repo: "https://github.com/dpkingii/relay-authz",
@@ -91,17 +90,30 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "prof-search",
+    name: "prof-search",
+    tagline: "Search engine",
+    summary:
+      "Searches 46k UMD professor reviews by meaning. Hybrid search plus a cross-encoder reranker raised nDCG@10 from 0.51 (keyword) to 0.74 on 60 graded queries, and fixed negation like \"not much homework\".",
+    description:
+      "Finds UMD professors by what students say about them, like \"hard exams but fair\", across 46k PlanetTerp reviews. A cross-encoder reranker reads each query and review together, so it gets negation like \"not much homework\" right.",
+    notes:
+      "Runs locally, not deployed. Recall is measured against a pool of results judged from all four modes, so it's relative to what they found. The reranker is CPU bound at about 12 searches/s on a laptop, compared to about 280 for vector search alone.",
+    repo: "https://github.com/dpkingii/prof-search",
+    tags: ["Python", "FastAPI", "PostgreSQL", "pgvector", "ONNX", "k6"],
+    featured: true,
+  },
+  {
     slug: "layerup",
     name: "Layerup",
     tagline: "AI stylist web app",
     summary:
-      "An AI stylist that builds outfits from photos of your own clothes, layered for today's forecast.",
+      "An AI stylist that dresses you for today's forecast from your own closet. Photos are cut out in the browser, and Gemini picks only from what you own.",
     description:
-      "Tell it your plans and it builds an outfit from photos of your own clothes, layered for the hours you'll actually be outside. Swipe any piece to swap it, or ask for \"warmer\" or \"dressier\" and the next outfit keeps your swaps. A one-click guest demo comes with a seeded closet.",
+      "Tell it your plans and it builds an outfit from photos of your own clothes, layered for the hours you'll be outside. Try it with the one-click guest demo.",
     repo: "https://github.com/dpkingii/layerup",
     live: "https://layerup-woad.vercel.app",
     tags: ["Next.js", "TypeScript", "Supabase", "Gemini", "ONNX Runtime", "Vercel"],
-    featured: true,
   },
   {
     slug: "fake-artist",
@@ -126,19 +138,6 @@ export const projects: Project[] = [
     repo: "https://github.com/dpkingii/umd-calendar",
     live: "https://umd-calendar-tau.vercel.app",
     tags: ["Next.js", "TypeScript", "FastAPI", "Python", "Supabase", "Vercel"],
-  },
-  {
-    slug: "professor-rating",
-    name: "Professor Rating Predictor",
-    tagline: "Machine learning",
-    summary:
-      "Predicts UMD professors' star ratings from 36,000+ PlanetTerp reviews and grade data.",
-    description:
-      "Pulls 4,000+ UMD professors and 36,000+ reviews from the PlanetTerp API and predicts their star rating from grade distributions, the GPA students expect based on reviews, and VADER sentiment over the review text.",
-    repo: "https://github.com/dpkingii/PredictingProfessorRating",
-    slides:
-      "https://docs.google.com/presentation/d/1ZMibFFO4Uu8lSp2cKLQP4mOkvs8rS6rBQGHvfSQlXj0/edit?usp=sharing",
-    tags: ["Python", "scikit-learn", "pandas"],
   },
   {
     slug: "quietplate",
@@ -204,7 +203,7 @@ export const education = {
 export const skills: { label: string; items: string[] }[] = [
   {
     label: "Languages",
-    items: ["Java", "Python", "TypeScript", "JavaScript", "SQL", "C", "C++", "Dart", "HTML", "CSS"],
+    items: ["Java", "Python", "TypeScript", "JavaScript", "Go", "SQL", "C", "C++", "Dart", "HTML", "CSS"],
   },
   {
     label: "Frameworks",
@@ -212,7 +211,7 @@ export const skills: { label: string; items: string[] }[] = [
   },
   {
     label: "Tools & data",
-    items: ["Git", "Docker", "Jenkins", "Jira", "Linux", "Vercel", "Figma", "PostgreSQL", "MongoDB", "Firebase", "Supabase"],
+    items: ["Git", "Docker", "Jenkins", "Jira", "Linux", "Vercel", "Figma", "PostgreSQL", "pgvector", "Redis", "MongoDB", "Firebase", "Supabase"],
   },
   {
     label: "Practices",
