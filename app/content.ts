@@ -82,7 +82,7 @@ export const projects: Project[] = [
     summary:
       "A Zanzibar-style authorization service in Go that checks access through nested groups and folders. Its Redis cache held a 12.6 ms p99 at 8,000 checks/s.",
     description:
-      "A relationship-based authorization service modeled on Google's Zanzibar paper. It answers \"can this user do this action on this object?\" by walking relation tuples in PostgreSQL through nested groups and parent folders, with rules defined in one config file.",
+      "A relationship-based authorization service modeled on Google's Zanzibar paper. It answers \"can this user do this action on this object?\" by walking relation tuples in PostgreSQL through nested groups and parent folders, and \"what can this user access?\" with a reverse lookup that takes 7 queries instead of 45,760. Revision tokens keep revoked access from being served out of the Redis cache.",
     repo: "https://github.com/dpkingii/relay-authz",
     tags: ["Go", "PostgreSQL", "Redis", "Docker", "k6"],
     featured: true,
