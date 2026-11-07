@@ -28,14 +28,14 @@ export default function OutsideWork() {
       {items.map((item) => (
         <article key={item.title} className="flex flex-col border border-line bg-card">
           <div className="border-b border-line">{item.art}</div>
-          <div className="space-y-3 px-6 py-6">
-            <h3 className="font-display text-sm font-extrabold tracking-[0.18em] uppercase">
+          <div className="space-y-2 px-6 py-6">
+            <h3 className="font-display text-base font-bold">
               {item.title}
             </h3>
             <p className="leading-relaxed">{item.body}</p>
             {item.list && (
               <div className="pt-1">
-                <p className="font-display text-[0.65rem] font-bold tracking-[0.2em] text-muted uppercase">
+                <p className="text-xs font-semibold text-muted">
                   {item.listLabel}
                 </p>
                 <ul className="mt-2 list-disc space-y-1 pl-4 text-sm text-muted marker:text-accent">

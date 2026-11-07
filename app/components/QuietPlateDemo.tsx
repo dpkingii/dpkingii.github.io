@@ -27,7 +27,7 @@ export default function QuietPlateDemo() {
             className={`relative h-6 w-11 rounded-full transition-colors ${on ? "bg-[#7fa688]" : "bg-line"}`}
           >
             <span
-              className={`absolute top-0.5 left-0.5 size-5 rounded-full bg-white shadow transition-transform ${
+              className={`absolute top-0.5 left-0.5 size-5 rounded-full bg-white shadow motion-safe:transition-transform ${
                 on ? "translate-x-5" : ""
               }`}
             />

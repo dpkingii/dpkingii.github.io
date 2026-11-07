@@ -32,7 +32,7 @@ export const experience: Job[] = [
     tags: ["Java", "Spring Boot", "Angular", "TypeScript", "MongoDB", "Jenkins"],
   },
   {
-    role: "Software Engineer Contractor",
+    role: "Software Engineer",
     org: "Qubi by Qolour",
     location: "Remote",
     dates: "Sep 2025 – Apr 2026",
@@ -62,22 +62,40 @@ export const experience: Job[] = [
 ];
 
 export type Project = {
-  slug: "layerup" | "fake-artist" | "umd-calendar" | "quietplate" | "professor-rating";
+  slug: "layerup" | "relay-authz" | "fake-artist" | "umd-calendar" | "quietplate" | "professor-rating";
   name: string;
   tagline: string;
+  summary: string;
   description: string;
   highlight: string;
   repo: string;
   live?: string;
   slides?: string;
   tags: string[];
+  featured?: boolean;
 };
 
 export const projects: Project[] = [
   {
+    slug: "relay-authz",
+    name: "relay-authz",
+    tagline: "Authorization service",
+    summary:
+      "A Zanzibar-style authorization service in Go that checks access through nested groups and folders. Its Redis cache held a 12.6 ms p99 at 8,000 checks/s.",
+    description:
+      "A relationship-based authorization service modeled on Google's Zanzibar paper. It answers \"can this user do this action on this object?\" by walking relation tuples in PostgreSQL through nested groups and parent folders, with rules defined in one config file.",
+    highlight:
+      "Every write bumps a revision, and a cached check is served only if it's fresh enough, so a stale cache entry can never let a revoked user back in. In a k6 load test the Redis cache held a 12.6 ms p99 at 8,000 checks/s, where the uncached server hit 95 ms. Tests compare every check against brute force on 300 random tuple sets, cycles included.",
+    repo: "https://github.com/dpkingii/relay-authz",
+    tags: ["Go", "PostgreSQL", "Redis", "Docker", "k6"],
+    featured: true,
+  },
+  {
     slug: "layerup",
     name: "Layerup",
     tagline: "AI stylist web app",
+    summary:
+      "An AI stylist that builds outfits from photos of your own clothes, layered for today's forecast.",
     description:
       "Tell it your plans and it builds an outfit from photos of your own clothes, layered for the hours you'll actually be outside. Swipe any piece to swap it, or ask for \"warmer\" or \"dressier\" and the next outfit keeps your swaps. A one-click guest demo comes with a seeded closet.",
     highlight:
@@ -85,11 +103,14 @@ export const projects: Project[] = [
     repo: "https://github.com/dpkingii/layerup",
     live: "https://layerup-woad.vercel.app",
     tags: ["Next.js", "TypeScript", "Supabase", "Gemini", "ONNX Runtime", "Vercel"],
+    featured: true,
   },
   {
     slug: "fake-artist",
     name: "Fake Artist",
     tagline: "Multiplayer web game",
+    summary:
+      "A multiplayer drawing and bluffing game where the server keeps the secret word from the fake artist.",
     description:
       "A drawing and deduction game for up to 8 players, played remotely with a room code or on one shared device. Everyone adds to one canvas, but the fake artist only knows the category and has to bluff. Three modes (ink budget, free whiteboard, one stroke each) plus timers and a vote to finish.",
     highlight:
@@ -102,6 +123,8 @@ export const projects: Project[] = [
     slug: "umd-calendar",
     name: "UMD Calendar",
     tagline: "Full-stack web app",
+    summary:
+      "A subscribable calendar of UMD breaks, finals, and term dates with reminders you choose.",
     description:
       "A subscribable calendar of UMD breaks, finals, and term dates with reminders you choose. Pick what to include, add it to Google or Apple Calendar once, and it keeps itself up to date. No account, name, or email.",
     highlight:
@@ -111,20 +134,11 @@ export const projects: Project[] = [
     tags: ["Next.js", "TypeScript", "FastAPI", "Python", "Supabase", "Vercel"],
   },
   {
-    slug: "quietplate",
-    name: "QuietPlate",
-    tagline: "Chrome extension",
-    description:
-      "Built for people with eating disorders or disordered eating, for whom a calorie count next to every menu item can turn ordering into counting and push them away from what they actually want to eat. QuietPlate hides those numbers on restaurant menu sites as you browse, so the menu is just food again.",
-    highlight:
-      "Many menus split the number from the word \"calories,\" across separate elements or text nodes, so a plain regex misses them. QuietPlate handles both cases, blanking text in place so React-rendered menus don't break, and rescans as new items load. Everything runs in the browser, with 21 Vitest tests against jsdom.",
-    repo: "https://github.com/dpkingii/quietplate",
-    tags: ["JavaScript", "Manifest V3", "Vitest"],
-  },
-  {
     slug: "professor-rating",
     name: "Professor Rating Predictor",
     tagline: "Machine learning",
+    summary:
+      "Predicts UMD professors' star ratings from 36,000+ PlanetTerp reviews and grade data.",
     description:
       "Pulls 4,000+ UMD professors and 36,000+ reviews from the PlanetTerp API and predicts their star rating from grade distributions, the GPA students expect based on reviews, and VADER sentiment over the review text.",
     highlight:
@@ -133,6 +147,19 @@ export const projects: Project[] = [
     slides:
       "https://docs.google.com/presentation/d/1ZMibFFO4Uu8lSp2cKLQP4mOkvs8rS6rBQGHvfSQlXj0/edit?usp=sharing",
     tags: ["Python", "scikit-learn", "pandas"],
+  },
+  {
+    slug: "quietplate",
+    name: "QuietPlate",
+    tagline: "Chrome extension",
+    summary:
+      "A Chrome extension that hides calorie counts on restaurant menus, built for people with eating disorders.",
+    description:
+      "Built for people with eating disorders or disordered eating, for whom a calorie count next to every menu item can turn ordering into counting and push them away from what they actually want to eat. QuietPlate hides those numbers on restaurant menu sites as you browse, so the menu is just food again.",
+    highlight:
+      "Many menus split the number from the word \"calories,\" across separate elements or text nodes, so a plain regex misses them. QuietPlate handles both cases, blanking text in place so React-rendered menus don't break, and rescans as new items load. Everything runs in the browser, with 21 Vitest tests against jsdom.",
+    repo: "https://github.com/dpkingii/quietplate",
+    tags: ["JavaScript", "Manifest V3", "Vitest"],
   },
 ];
 

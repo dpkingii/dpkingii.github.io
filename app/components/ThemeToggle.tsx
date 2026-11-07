@@ -4,7 +4,13 @@ export default function ThemeToggle() {
   function toggle() {
     const root = document.documentElement;
     const next = root.dataset.theme === "dark" ? "light" : "dark";
+    // Without this, every color transition on the page fires at once and the switch smears.
+    const freeze = document.createElement("style");
+    freeze.textContent = "*,*::before,*::after{transition:none!important}";
+    document.head.appendChild(freeze);
     root.dataset.theme = next;
+    void getComputedStyle(root).color;
+    requestAnimationFrame(() => requestAnimationFrame(() => freeze.remove()));
     try {
       localStorage.setItem("theme", next);
     } catch {}

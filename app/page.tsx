@@ -1,13 +1,7 @@
 import Image from "next/image";
 import avatar from "@/public/avatar.jpeg";
-import fakeArtistDrawing from "@/public/projects/fake-artist-drawing.jpg";
-import layerupToday from "@/public/projects/layerup-today.jpg";
-import quietplatePopup from "@/public/projects/quietplate-popup.png";
-import umdCalendar from "@/public/projects/umd-calendar.jpg";
 import OutsideWork from "./components/OutsideWork";
-import ProfRatingCharts from "./components/ProfRatingCharts";
-import QuietPlateDemo from "./components/QuietPlateDemo";
-import ThemeToggle from "./components/ThemeToggle";
+import { ButtonLink, Card, CardHeader, ProjectCard, Tags } from "./components/ProjectCard";
 import {
   education,
   experience,
@@ -16,44 +10,12 @@ import {
   projects,
   skills,
   type Job,
-  type Project,
 } from "./content";
 
-const sections = [
-  { id: "about", label: "About" },
-  { id: "outside", label: "Outside work" },
-  { id: "projects", label: "Projects" },
-  { id: "experience", label: "Experience" },
-  { id: "leadership", label: "Leadership" },
-  { id: "education", label: "Education" },
-];
 
 export default function Home() {
   return (
     <>
-      <header className="sticky top-0 z-10 border-b border-line bg-card/90 backdrop-blur">
-        <div className="flex overflow-x-auto">
-          <a
-            href="#about"
-            className="shrink-0 border-r border-line px-6 py-4 font-display text-xs font-extrabold tracking-[0.25em] uppercase"
-          >
-            Lianyu Peng
-          </a>
-          <nav className="flex items-center">
-            {sections.slice(1).map((s) => (
-              <a
-                key={s.id}
-                href={`#${s.id}`}
-                className="shrink-0 border-l border-line px-5 font-display text-[0.7rem] tracking-[0.2em] text-muted uppercase first:border-l-0 hover:text-accent"
-              >
-                {s.label}
-              </a>
-            ))}
-          </nav>
-          <ThemeToggle />
-        </div>
-      </header>
-
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:grid lg:grid-cols-[17rem_1fr] lg:gap-10 lg:py-12">
         <Sidebar />
 
@@ -65,9 +27,14 @@ export default function Home() {
           </Section>
 
           <Section id="projects" title="Projects">
-            {projects.map((p) => (
-              <ProjectCard key={p.slug} project={p} />
-            ))}
+            {projects
+              .filter((p) => p.featured)
+              .map((p) => (
+                <ProjectCard key={p.slug} project={p} sizes="(min-width: 768px) 24rem, 100vw" horizontal />
+              ))}
+            <div className="flex justify-center">
+              <ButtonLink href="/projects">See more</ButtonLink>
+            </div>
           </Section>
 
           <Section id="experience" title="Experience">
@@ -106,9 +73,7 @@ export default function Home() {
                 <dl className="space-y-3">
                   {skills.map((group) => (
                     <div key={group.label} className="sm:flex sm:gap-4">
-                      <dt className="shrink-0 font-display text-[0.7rem] font-bold tracking-[0.2em] uppercase sm:w-32 sm:pt-1">
-                        {group.label}
-                      </dt>
+                      <dt className="shrink-0 font-semibold sm:w-32">{group.label}</dt>
                       <dd className="text-muted">{group.items.join(" · ")}</dd>
                     </div>
                   ))}
@@ -117,7 +82,7 @@ export default function Home() {
             </Card>
           </Section>
 
-          <footer className="pt-4 pb-8 text-center font-display text-[0.7rem] tracking-[0.2em] text-muted uppercase">
+          <footer className="pt-4 pb-8 text-center text-sm text-muted">
             Lianyu Peng · College Park, MD
           </footer>
         </main>
@@ -133,7 +98,7 @@ function Sidebar() {
         <Image
           src={avatar}
           alt="Lianyu Peng"
-          className="size-20 shrink-0 rounded-sm border border-line lg:size-24"
+          className="size-20 shrink-0 rounded-sm outline-1 -outline-offset-1 outline-black/10 dark:outline-white/10 lg:size-24"
           priority
         />
         <div>
@@ -145,7 +110,7 @@ function Sidebar() {
         </div>
       </div>
 
-      <ul className="mt-6 space-y-3 font-display text-[0.75rem] tracking-[0.2em] text-muted uppercase">
+      <ul className="mt-6 space-y-1.5 text-muted">
         <li>Software Engineer</li>
         <li>CS @ UMD &rsquo;28</li>
         <li>Prev. SWE Intern @ Visa</li>
@@ -163,19 +128,6 @@ function Sidebar() {
           <GitHubIcon />
         </a>
       </div>
-
-      <hr className="mt-8 hidden border-line lg:block" />
-      <nav className="mt-6 hidden space-y-2 lg:block">
-        {sections.map((s) => (
-          <a
-            key={s.id}
-            href={`#${s.id}`}
-            className="block font-display text-[0.7rem] tracking-[0.2em] text-muted uppercase hover:text-accent"
-          >
-            {s.label}
-          </a>
-        ))}
-      </nav>
     </aside>
   );
 }
@@ -185,7 +137,7 @@ function About() {
     <section id="about">
       <Card>
         <div className="border-b border-line px-6 py-8 sm:px-8">
-          <h2 className="font-display text-xl font-extrabold tracking-[0.2em] uppercase sm:text-2xl">
+          <h2 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
             Hi, I&rsquo;m Lianyu. Call me Nick!
           </h2>
         </div>
@@ -227,121 +179,6 @@ function Section({ id, title, children }: { id: string; title: string; children:
   );
 }
 
-function Card({ children }: { children: React.ReactNode }) {
-  return <article className="border border-line bg-card">{children}</article>;
-}
-
-function CardHeader({
-  title,
-  subtitle,
-  meta,
-  logo,
-}: {
-  title: string;
-  subtitle: string;
-  meta?: string;
-  logo?: string;
-}) {
-  return (
-    <div className="flex border-b border-line">
-      <div className="flex flex-1 items-center gap-4 px-6 py-6 sm:gap-5 sm:px-8">
-        {logo && (
-          <Image
-            src={logo}
-            alt=""
-            width={48}
-            height={48}
-            unoptimized={logo.endsWith(".svg")}
-            className="size-11 shrink-0 self-start rounded-sm border border-line bg-white sm:size-12 sm:self-center"
-          />
-        )}
-        <div>
-          <h3 className="font-display text-base font-extrabold tracking-[0.2em] uppercase sm:text-lg">
-            {title}
-          </h3>
-          <p className="mt-2 font-display text-[0.7rem] tracking-[0.2em] text-muted uppercase">
-            {subtitle}
-          </p>
-          {meta && (
-            <p className="mt-2 font-display text-[0.7rem] tracking-[0.2em] text-muted uppercase sm:hidden">
-              {meta}
-            </p>
-          )}
-        </div>
-      </div>
-      {meta && (
-        <div className="hidden w-60 items-center justify-end border-l border-line px-8 py-6 text-right font-display text-[0.7rem] tracking-[0.2em] whitespace-nowrap text-muted uppercase sm:flex">
-          {meta}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function CardFooter({ tags, children }: { tags: string[]; children?: React.ReactNode }) {
-  return (
-    <div className="flex flex-wrap items-center justify-between gap-4 px-6 pb-6 sm:px-8">
-      <div className="flex flex-wrap gap-3">{children}</div>
-      <p className="font-display text-[0.65rem] tracking-[0.2em] text-muted uppercase">
-        {tags.join(", ")}
-      </p>
-    </div>
-  );
-}
-
-function ProjectCard({ project: p }: { project: Project }) {
-  return (
-    <Card>
-      <CardHeader title={p.name} subtitle={p.tagline} />
-      <div className="border-b border-line px-6 py-6 sm:px-8">
-        {p.slug === "layerup" ? (
-          <Image
-            src={layerupToday}
-            alt="Layerup suggesting a crewneck, black jeans, and boots for dinner out, drawn as a layered mannequin"
-            className="w-full rounded-md border border-line"
-            sizes="(min-width: 768px) 40rem, 100vw"
-          />
-        ) : p.slug === "fake-artist" ? (
-          <Image
-            src={fakeArtistDrawing}
-            alt="Fake Artist mid-game, with players drawing on a shared canvas"
-            className="w-full rounded-md border border-line"
-            sizes="(min-width: 768px) 40rem, 100vw"
-          />
-        ) : p.slug === "umd-calendar" ? (
-          <Image
-            src={umdCalendar}
-            alt="UMD Calendar landing page with options for events, terms, and reminders, and an Add to Google Calendar button"
-            className="w-full rounded-md border border-line"
-            sizes="(min-width: 768px) 40rem, 100vw"
-          />
-        ) : p.slug === "quietplate" ? (
-          <div className="grid items-center gap-6 md:grid-cols-[1fr_12rem]">
-            <QuietPlateDemo />
-            <Image
-              src={quietplatePopup}
-              alt="The QuietPlate popup showing Numbers hidden"
-              className="hidden rounded-md border border-line md:block"
-              sizes="12rem"
-            />
-          </div>
-        ) : (
-          <ProfRatingCharts />
-        )}
-      </div>
-      <div className="space-y-4 px-6 py-6 sm:px-8">
-        <p className="leading-relaxed">{p.description}</p>
-        <p className="border-l-2 border-accent pl-4 leading-relaxed text-muted">{p.highlight}</p>
-      </div>
-      <CardFooter tags={p.tags}>
-        {p.live && <ButtonLink href={p.live}>{p.slug === "fake-artist" ? "Play it" : p.slug === "layerup" ? "Try the demo" : "Try it"}</ButtonLink>}
-        <ButtonLink href={p.repo}>GitHub repo</ButtonLink>
-        {p.slides && <ButtonLink href={p.slides}>Slide deck</ButtonLink>}
-      </CardFooter>
-    </Card>
-  );
-}
-
 function JobRow({ job }: { job: Job }) {
   return (
     <li className="px-6 py-6 sm:px-8">
@@ -356,19 +193,15 @@ function JobRow({ job }: { job: Job }) {
         />
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-            <h3 className="font-display text-sm font-extrabold tracking-[0.18em] uppercase sm:text-base">
-              {job.role}
-            </h3>
-            <p className="font-display text-[0.7rem] tracking-[0.2em] whitespace-nowrap text-muted uppercase">
-              {job.dates}
-            </p>
+            <h3 className="font-display text-base font-bold sm:text-lg">{job.role}</h3>
+            <p className="text-sm whitespace-nowrap text-muted">{job.dates}</p>
           </div>
-          <p className="mt-1 font-display text-[0.7rem] tracking-[0.2em] text-muted uppercase">
+          <p className="mt-0.5 text-sm text-muted">
             {job.org} · {job.location}
           </p>
           <p className="mt-3 leading-relaxed">{job.summary}</p>
           <details className="group mt-3">
-            <summary className="cursor-pointer list-none font-display text-[0.7rem] font-bold tracking-[0.2em] text-accent uppercase hover:text-accent-hover [&::-webkit-details-marker]:hidden">
+            <summary className="cursor-pointer list-none text-sm font-semibold text-accent hover:text-accent-hover [&::-webkit-details-marker]:hidden">
               <span className="group-open:hidden">Details +</span>
               <span className="hidden group-open:inline">Hide details −</span>
             </summary>
@@ -377,27 +210,14 @@ function JobRow({ job }: { job: Job }) {
                 <li key={b}>{b}</li>
               ))}
             </ul>
-            <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
+            <div className="mt-4 space-y-4">
               {job.link && <ButtonLink href={job.link.href}>{job.link.label}</ButtonLink>}
-              <p className="font-display text-[0.65rem] tracking-[0.2em] text-muted uppercase">
-                {job.tags.join(", ")}
-              </p>
+              <Tags tags={job.tags} />
             </div>
           </details>
         </div>
       </div>
     </li>
-  );
-}
-
-function ButtonLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <a
-      href={href}
-      className="inline-block border border-line px-5 py-3 font-display text-[0.7rem] font-bold tracking-[0.2em] uppercase transition-colors hover:border-accent hover:text-accent"
-    >
-      {children}
-    </a>
   );
 }
 

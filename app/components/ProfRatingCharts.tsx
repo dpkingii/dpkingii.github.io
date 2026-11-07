@@ -1,5 +1,5 @@
 // Numbers come from the notebook's 10-fold cross-validation and random forest outputs.
-const models = [
+export const models = [
   { label: "Support vector regression", value: 0.618 },
   { label: "Linear regression", value: 0.61 },
   { label: "Random forest", value: 0.587 },
@@ -13,17 +13,17 @@ const features = [
 
 export default function ProfRatingCharts() {
   return (
-    <div className="grid gap-8 md:grid-cols-2">
+    <div className="grid gap-8 @2xl:grid-cols-2">
       <BarChart title="R² by model" rows={models} />
       <BarChart title="What drives the rating" rows={features} />
     </div>
   );
 }
 
-function BarChart({ title, rows }: { title: string; rows: { label: string; value: number }[] }) {
+export function BarChart({ title, rows }: { title: string; rows: { label: string; value: number }[] }) {
   return (
     <figure>
-      <figcaption className="font-display text-[0.7rem] font-bold tracking-[0.2em] uppercase">
+      <figcaption className="text-sm font-semibold">
         {title}
       </figcaption>
       <dl className="mt-4 space-y-3">

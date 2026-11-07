@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Raleway, Source_Sans_3 } from "next/font/google";
+import SiteHeader from "./components/SiteHeader";
 import "./globals.css";
 
 const raleway = Raleway({
@@ -34,7 +35,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           }}
         />
       </head>
-      <body className="min-h-screen font-sans">{children}</body>
+      <body className="min-h-screen font-sans">
+        {/* Kept outside the pages: Next.js won't scroll to the top on navigation when a page starts with a sticky element. */}
+        <SiteHeader />
+        {children}
+      </body>
     </html>
   );
 }

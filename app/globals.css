@@ -8,7 +8,7 @@
   --ink: #1c1b18;
   --muted: #6d675e;
   --accent: #8c1b2b;
-  --accent-hover: #e21833;
+  --accent-hover: #6b1421;
   --stars: 0;
   --show-sun: none;
   --show-moon: block;
@@ -18,12 +18,12 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
   --bg: #0f0e0d;
-  --card: #1a1917;
-  --line: #2f2c28;
+  --card: #1f1d1a;
+  --line: #3a3631;
   --ink: #ece8e1;
   --muted: #a39d93;
-  --accent: #ff6b7d;
-  --accent-hover: #ff9aa6;
+  --accent: #e0808c;
+  --accent-hover: #eda5ae;
   --stars: 1;
   --show-sun: block;
   --show-moon: none;
@@ -60,6 +60,8 @@ body::after {
   background-size: 530px 470px;
   opacity: calc(0.5 * var(--stars));
 }
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme inline {
   --color-bg: var(--bg);
