@@ -90,6 +90,21 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "layerup",
+    name: "Layerup",
+    tagline: "AI stylist web app",
+    summary:
+      "An AI stylist that dresses you for today's forecast from your own closet. Photos are cut out in the browser, and Gemini picks only from what you own.",
+    description:
+      "Tell it your plans and it builds an outfit from photos of your own clothes, layered for the hours you'll be outside. Try it with the one-click guest demo.",
+    notes:
+      "Runs on free tiers, with failover to a second model when Gemini is overloaded. Background removal runs in the browser, so the first upload downloads a 91 MB model.",
+    repo: "https://github.com/dpkingii/layerup",
+    live: "https://layerup-woad.vercel.app",
+    tags: ["Next.js", "TypeScript", "Supabase", "Gemini", "ONNX Runtime", "Vercel"],
+    featured: true,
+  },
+  {
     slug: "prof-search",
     name: "prof-search",
     tagline: "Search engine",
@@ -101,19 +116,6 @@ export const projects: Project[] = [
       "Runs locally, not deployed. Recall is measured against a pool of results judged from all four modes, so it's relative to what they found. The reranker is CPU bound at about 12 searches/s on a laptop, compared to about 280 for vector search alone.",
     repo: "https://github.com/dpkingii/prof-search",
     tags: ["Python", "FastAPI", "PostgreSQL", "pgvector", "ONNX", "k6"],
-    featured: true,
-  },
-  {
-    slug: "layerup",
-    name: "Layerup",
-    tagline: "AI stylist web app",
-    summary:
-      "An AI stylist that dresses you for today's forecast from your own closet. Photos are cut out in the browser, and Gemini picks only from what you own.",
-    description:
-      "Tell it your plans and it builds an outfit from photos of your own clothes, layered for the hours you'll be outside. Try it with the one-click guest demo.",
-    repo: "https://github.com/dpkingii/layerup",
-    live: "https://layerup-woad.vercel.app",
-    tags: ["Next.js", "TypeScript", "Supabase", "Gemini", "ONNX Runtime", "Vercel"],
   },
   {
     slug: "fake-artist",
