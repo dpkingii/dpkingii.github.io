@@ -1,24 +1,9 @@
-// Numbers come from the notebook's 10-fold cross-validation and random forest outputs.
+// Numbers come from the notebook's 10-fold cross-validation.
 export const models = [
   { label: "Support vector regression", value: 0.618 },
   { label: "Linear regression", value: 0.61 },
   { label: "Random forest", value: 0.587 },
 ];
-
-const features = [
-  { label: "Review sentiment (VADER)", value: 0.741 },
-  { label: "Average GPA", value: 0.148 },
-  { label: "Expected GPA from reviews", value: 0.111 },
-];
-
-export default function ProfRatingCharts() {
-  return (
-    <div className="grid gap-8 @2xl:grid-cols-2">
-      <BarChart title="R² by model" rows={models} />
-      <BarChart title="What drives the rating" rows={features} />
-    </div>
-  );
-}
 
 export function BarChart({ title, rows }: { title: string; rows: { label: string; value: number }[] }) {
   return (

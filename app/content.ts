@@ -67,7 +67,6 @@ export type Project = {
   tagline: string;
   summary: string;
   description: string;
-  highlight: string;
   repo: string;
   live?: string;
   slides?: string;
@@ -84,8 +83,6 @@ export const projects: Project[] = [
       "A Zanzibar-style authorization service in Go that checks access through nested groups and folders. Its Redis cache held a 12.6 ms p99 at 8,000 checks/s.",
     description:
       "A relationship-based authorization service modeled on Google's Zanzibar paper. It answers \"can this user do this action on this object?\" by walking relation tuples in PostgreSQL through nested groups and parent folders, with rules defined in one config file.",
-    highlight:
-      "Every write bumps a revision, and a cached check is served only if it's fresh enough, so a stale cache entry can never let a revoked user back in. In a k6 load test the Redis cache held a 12.6 ms p99 at 8,000 checks/s, where the uncached server hit 95 ms. Tests compare every check against brute force on 300 random tuple sets, cycles included.",
     repo: "https://github.com/dpkingii/relay-authz",
     tags: ["Go", "PostgreSQL", "Redis", "Docker", "k6"],
     featured: true,
@@ -98,8 +95,6 @@ export const projects: Project[] = [
       "An AI stylist that builds outfits from photos of your own clothes, layered for today's forecast.",
     description:
       "Tell it your plans and it builds an outfit from photos of your own clothes, layered for the hours you'll actually be outside. Swipe any piece to swap it, or ask for \"warmer\" or \"dressier\" and the next outfit keeps your swaps. A one-click guest demo comes with a seeded closet.",
-    highlight:
-      "Gemini returns a schema-validated outfit built only from item ids in your closet, and a 503 fails over instantly to a backup model so the chat never hangs. Background removal runs in the browser in a Web Worker, and guests get an isolated closet, a 10-request AI cap enforced in Postgres, and a daily cleanup cron.",
     repo: "https://github.com/dpkingii/layerup",
     live: "https://layerup-woad.vercel.app",
     tags: ["Next.js", "TypeScript", "Supabase", "Gemini", "ONNX Runtime", "Vercel"],
@@ -113,8 +108,6 @@ export const projects: Project[] = [
       "A multiplayer drawing and bluffing game where the server keeps the secret word from the fake artist.",
     description:
       "A drawing and deduction game for up to 8 players, played remotely with a room code or on one shared device. Everyone adds to one canvas, but the fake artist only knows the category and has to bluff. Three modes (ink budget, free whiteboard, one stroke each) plus timers and a vote to finish.",
-    highlight:
-      "The server owns all game state and sends each player a filtered view, so the fake artist never receives the secret word. Client and server share one TypeScript protocol module, and 14 Vitest integration tests play full games over real sockets.",
     repo: "https://github.com/dpkingii/fake-artist",
     live: "https://fake-artist-0awa.onrender.com/",
     tags: ["React", "TypeScript", "Node.js", "WebSockets", "Docker", "Vitest"],
@@ -127,8 +120,6 @@ export const projects: Project[] = [
       "A subscribable calendar of UMD breaks, finals, and term dates with reminders you choose.",
     description:
       "A subscribable calendar of UMD breaks, finals, and term dates with reminders you choose. Pick what to include, add it to Google or Apple Calendar once, and it keeps itself up to date. No account, name, or email.",
-    highlight:
-      "A FastAPI backend scrapes the UMD Academic Catalog and builds an iCalendar feed for each subscriber's settings. Feeds share one cached copy of the events, so it scrapes UMD about once a day no matter how many people subscribe. Anonymous feed fetches and button clicks go to insert-only Supabase tables, and the page shows a subscriber count once it passes 50.",
     repo: "https://github.com/dpkingii/umd-calendar",
     live: "https://umd-calendar-tau.vercel.app",
     tags: ["Next.js", "TypeScript", "FastAPI", "Python", "Supabase", "Vercel"],
@@ -141,8 +132,6 @@ export const projects: Project[] = [
       "Predicts UMD professors' star ratings from 36,000+ PlanetTerp reviews and grade data.",
     description:
       "Pulls 4,000+ UMD professors and 36,000+ reviews from the PlanetTerp API and predicts their star rating from grade distributions, the GPA students expect based on reviews, and VADER sentiment over the review text.",
-    highlight:
-      "Compared linear regression, random forest, KNN, and SVR with 10-fold cross-validation. KNN scored best at R² 0.63 and cut error 39% against a mean baseline, but plain linear regression hit 0.61, so most of the signal is linear.",
     repo: "https://github.com/dpkingii/PredictingProfessorRating",
     slides:
       "https://docs.google.com/presentation/d/1ZMibFFO4Uu8lSp2cKLQP4mOkvs8rS6rBQGHvfSQlXj0/edit?usp=sharing",
@@ -156,8 +145,6 @@ export const projects: Project[] = [
       "A Chrome extension that hides calorie counts on restaurant menus, built for people with eating disorders.",
     description:
       "Built for people with eating disorders or disordered eating, for whom a calorie count next to every menu item can turn ordering into counting and push them away from what they actually want to eat. QuietPlate hides those numbers on restaurant menu sites as you browse, so the menu is just food again.",
-    highlight:
-      "Many menus split the number from the word \"calories,\" across separate elements or text nodes, so a plain regex misses them. QuietPlate handles both cases, blanking text in place so React-rendered menus don't break, and rescans as new items load. Everything runs in the browser, with 21 Vitest tests against jsdom.",
     repo: "https://github.com/dpkingii/quietplate",
     tags: ["JavaScript", "Manifest V3", "Vitest"],
   },
