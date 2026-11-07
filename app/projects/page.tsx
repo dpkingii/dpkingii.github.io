@@ -29,6 +29,14 @@ export default function Projects() {
               <div>
                 <ProjectInfo project={p} />
                 <p className="mt-4 leading-relaxed">{p.description}</p>
+                {p.notes && (
+                  <>
+                    <h4 className="mt-5 font-display text-xs font-extrabold tracking-[0.2em] text-accent uppercase">
+                      Notes &amp; limits
+                    </h4>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">{p.notes}</p>
+                  </>
+                )}
                 <ProjectLinks project={p} />
               </div>
             </article>

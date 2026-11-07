@@ -67,6 +67,7 @@ export type Project = {
   tagline: string;
   summary: string;
   description: string;
+  notes?: string;
   repo: string;
   live?: string;
   slides?: string;
@@ -83,6 +84,8 @@ export const projects: Project[] = [
       "A Zanzibar-style authorization service in Go that checks access through nested groups and folders. Its Redis cache held a 12.6 ms p99 at 8,000 checks/s.",
     description:
       "A relationship-based authorization service modeled on Google's Zanzibar paper. It answers \"can this user do this action on this object?\" by walking relation tuples in PostgreSQL through nested groups and parent folders, and \"what can this user access?\" with a reverse lookup that takes 7 queries instead of 45,760. Revision tokens keep revoked access from being served out of the Redis cache.",
+    notes:
+      "It implements Zanzibar's core model (relation tuples, rules for how relations grant each other, and revision tokens in place of its zookies) on one Postgres and one Redis. Google's version stores trillions of tuples in Spanner across data centers and caches shared subproblems; this one has no sharding or replication and caches only whole checks.",
     repo: "https://github.com/dpkingii/relay-authz",
     tags: ["Go", "PostgreSQL", "Redis", "Docker", "k6"],
     featured: true,
