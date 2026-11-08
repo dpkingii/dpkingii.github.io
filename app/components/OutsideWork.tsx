@@ -11,9 +11,9 @@ const items = [
     ],
   },
   {
-    title: "The night sky",
-    art: <DarkField />,
-    body: "I look up every time I walk back to my apartment on campus. Someday I want to lie in a field somewhere truly dark and just watch. No bugs, ideally.",
+    title: "Car spotting",
+    art: <Car />,
+    body: "JDM, Euro, old classics. If it's clearly someone's pride and joy, I'm stopping to look. I also keep up with mods and the industry on YouTube.",
   },
   {
     title: "Pickup sports",
@@ -68,23 +68,44 @@ function NoodleBowl() {
   );
 }
 
-function DarkField() {
-  const stars: [number, number, number][] = [
-    [14, 14, 1.2], [32, 30, 0.8], [48, 10, 1.4], [62, 38, 0.9], [76, 18, 1], [90, 8, 0.8],
-    [104, 30, 1.5], [118, 14, 0.9], [132, 36, 1.1], [146, 12, 1.3], [24, 50, 0.8], [56, 58, 1],
-    [84, 48, 0.8], [112, 56, 0.9], [140, 54, 0.8], [70, 66, 0.7], [100, 70, 0.8], [8, 66, 0.9],
-    [152, 70, 0.7], [40, 40, 0.6], [126, 46, 0.6],
-  ];
+function Car() {
+  const spokes = Array.from({ length: 10 }, (_, i) => {
+    const a = (i * Math.PI) / 5;
+    const [x, y] = [Math.cos(a), Math.sin(a)];
+    return `M${(15 * x).toFixed(1)} ${(15 * y).toFixed(1)}L${(68 * x).toFixed(1)} ${(68 * y).toFixed(1)}`;
+  }).join("");
   return (
-    <svg viewBox="0 0 160 120" className="block w-full" role="img" aria-label="Stars over a dark field">
-      <rect width="160" height="120" fill="#0d1022" />
-      <ellipse cx="80" cy="44" rx="90" ry="14" transform="rotate(-24 80 44)" fill="#9fb3ff" fillOpacity="0.08" />
-      {stars.map(([x, y, r]) => (
-        <circle key={`${x}-${y}`} cx={x} cy={y} r={r} fill="#fff" fillOpacity={0.5 + r / 3} />
-      ))}
-      <path d="M120 22l14 8" stroke="#fff" strokeOpacity="0.6" strokeWidth="0.8" strokeLinecap="round" />
-      <path d="M0 94c30-10 62-10 92-2s50 6 68-4v32H0z" fill="#070912" />
-      <path d="M22 92v-5M25 92v-7M28 92v-4M128 93v-5M131 93v-6M134 93v-4" stroke="#1b2140" strokeWidth="1.2" strokeLinecap="round" />
+    <svg viewBox="0 0 160 120" className="block w-full bg-bg" role="img" aria-label="A Porsche 911 Turbo S in side profile">
+      <path d="M76 22l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="#e8c27a" />
+      <g transform="matrix(-1 0 0 1 160 0)">
+        <path d="M148 66h9M150 74h8" stroke="var(--muted)" strokeWidth="2" strokeLinecap="round" />
+        {/* Traced in photo pixels, then scaled into the 160x120 frame */}
+        <g transform="matrix(0.125 0 0 0.125 -6.25 14.75)">
+          <path d="M1080 322 1165 316 1160 336 1095 340z" fill="var(--accent)" />
+          <path d="M100 528C88 520 82 500 82 470V440C85 425 100 412 125 405 150 380 190 362 240 355 300 348 380 340 430 335 480 315 540 280 600 258 650 245 740 242 800 248 880 258 960 285 1040 310 1070 318 1085 322 1095 328 1130 335 1160 345 1180 360 1195 375 1200 395 1200 430V495C1200 510 1190 520 1165 525z" fill="var(--accent)" />
+          <path d="M520 340C540 310 565 280 590 268 650 258 740 255 800 262 860 270 910 295 935 322z" fill="var(--card)" />
+          <path d="M770 256 792 262 794 331 774 332z" fill="var(--accent)" />
+          <path d="M520 322C525 312 560 312 580 318V345C560 350 530 350 520 340z" fill="var(--accent)" stroke="#1d1b19" strokeOpacity="0.4" strokeWidth="6" />
+          <path d="M455 345C450 400 452 460 458 505M792 335C797 400 787 460 772 505" stroke="var(--card)" strokeOpacity="0.35" strokeWidth="8" fill="none" />
+          <rect x="712" y="380" width="55" height="10" rx="5" fill="#1d1b19" fillOpacity="0.3" />
+          <path d="M830 360C860 352 885 360 880 375L850 420C840 430 820 425 822 410z" fill="#1d1b19" fillOpacity="0.7" />
+          <path d="M160 405C175 380 205 362 238 360 230 380 205 400 170 412z" fill="#e8c27a" />
+          <rect x="92" y="448" width="45" height="55" rx="8" fill="#1d1b19" fillOpacity="0.6" />
+          <path d="M1078 368H1170M1125 445H1195" stroke="#1d1b19" strokeWidth="9" strokeLinecap="round" />
+          <path d="M410 520H860" stroke="#1d1b19" strokeOpacity="0.3" strokeWidth="10" />
+          {[320, 955].map((cx) => (
+            <g key={cx} transform={`translate(${cx} 480)`}>
+              <circle r="102" fill="var(--bg)" />
+              <circle r="90" fill="#1d1b19" />
+              <path d="M-39-22.5A45 45 0 0 1-15.4-42.3" stroke="#e8c27a" strokeWidth="20" fill="none" />
+              <circle r="70" fill="none" stroke="var(--muted)" strokeWidth="7" />
+              <path d={spokes} stroke="var(--muted)" strokeWidth="7" />
+              <circle r="14" fill="var(--muted)" />
+            </g>
+          ))}
+        </g>
+      </g>
+      <path d="M8 86h144" stroke="var(--muted)" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
