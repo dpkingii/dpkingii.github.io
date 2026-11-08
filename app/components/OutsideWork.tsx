@@ -13,7 +13,7 @@ const items = [
   {
     title: "Car spotting",
     art: <Car />,
-    body: "JDM, Euro, old classics. If it's clearly someone's pride and joy, I'm stopping to look. I also keep up with mods and the industry on YouTube.",
+    body: "JDM, Euro, old classics. If it's clearly someone's pride and joy, I'm stopping to look. When I see a build I like, I usually end up looking up every mod on it later.",
   },
   {
     title: "Pickup sports",
@@ -76,7 +76,6 @@ function Car() {
   }).join("");
   return (
     <svg viewBox="0 0 160 120" className="block w-full bg-bg" role="img" aria-label="A Porsche 911 Turbo S in side profile">
-      <path d="M76 22l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="#e8c27a" />
       <g transform="matrix(-1 0 0 1 160 0)">
         <path d="M148 66h9M150 74h8" stroke="var(--muted)" strokeWidth="2" strokeLinecap="round" />
         {/* Traced in photo pixels, then scaled into the 160x120 frame */}
