@@ -112,7 +112,7 @@ function Sidebar() {
 
       <ul className="mt-6 space-y-1.5 text-muted">
         <li>Software Engineer</li>
-        <li>CS @ UMD &rsquo;28</li>
+        <li>CS @ UMD</li>
         <li>Prev. SWE Intern @ Visa</li>
       </ul>
 
