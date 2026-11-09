@@ -11,6 +11,7 @@ export type Job = {
   logo: string;
   summary: string;
   bullets: string[];
+  more?: string[];
   tags: string[];
   link?: { label: string; href: string };
 };
@@ -26,10 +27,26 @@ export const experience: Job[] = [
     bullets: [
       "Shipped an admin role to an agentic AI workforce planning app by reworking its RBAC model across MongoDB, Spring Boot, and Angular, enforcing separation of duties for 16 security groups in a launch projected to save 24,000 hours a year.",
       "Closed a pre-production security gap by extending role-based authorization from Angular route guards to Spring Boot controller-level checks, then wrote unit tests for 15+ endpoints to confirm no other routes were exposed.",
+    ],
+    more: [
       "Blocked malformed and unauthorized data from reaching downstream systems by adding validation across 38 fields in 5 upload sheets, at both the Angular front end and the Spring Boot REST API layer.",
       "Cut partial-match search round trips by 67% by consolidating 3 MongoDB queries into 1 aggregation pipeline, prototyped on real data in Compass and released through Jenkins CI/CD after code review.",
     ],
     tags: ["Java", "Spring Boot", "Angular", "TypeScript", "MongoDB", "Jenkins"],
+  },
+  {
+    role: "Director of Education",
+    org: "App Development Club at UMD",
+    location: "College Park, MD",
+    dates: "Jan 2026 – Present",
+    logo: "/logos/adc.png",
+    summary: "Lead an 8-person education team and teach a production-stack curriculum to 45 students a semester.",
+    bullets: [
+      "Lead an 8-person team that scaled recruitment to 500+ applicants a semester by redesigning interviews to evaluate incoming freshmen on interest and commitment rather than prior technical experience.",
+      "Design and teach a production-oriented curriculum in React, FastAPI, MongoDB, and PostgreSQL to 45 students a semester, with 18 advancing through the shadowing program onto active development teams.",
+    ],
+    tags: ["React", "FastAPI", "MongoDB", "PostgreSQL", "Teaching"],
+    link: { label: "Lecture code", href: "https://github.com/dpkingii/bootcamp-lecture-code" },
   },
   {
     role: "Software Engineer",
@@ -58,6 +75,19 @@ export const experience: Job[] = [
       "Built a full-stack property search in React and Next.js with Prisma-backed multi-field filtering (location, availability, guests) to replace manual catalog browsing.",
     ],
     tags: ["Next.js", "React", "Node.js", "PostgreSQL", "Prisma"],
+  },
+  {
+    role: "Technical Support Engineer",
+    org: "UMD Department of Computer Science",
+    location: "College Park, MD",
+    dates: "May 2024 – Present",
+    logo: "/logos/umd-seal.png",
+    summary: "Implemented LDAP and Red Hat IdM authentication for 80+ faculty across a 1,200+ node network.",
+    bullets: [
+      "Secured centralized authentication for 80+ CS faculty across a 1,200+ node network by implementing LDAP and Red Hat Identity Management, including host-based access policies and provisioning.",
+      "Maintain a 2-hour response SLA while troubleshooting and resolving 12+ technical issues a week across Linux and Windows environments, and write reference documentation for recurring issues.",
+    ],
+    tags: ["Linux", "RHEL", "LDAP", "Red Hat IdM"],
   },
 ];
 
@@ -151,36 +181,6 @@ export const projects: Project[] = [
       "Built for people with eating disorders or disordered eating, for whom a calorie count next to every menu item can turn ordering into counting and push them away from what they actually want to eat. QuietPlate hides those numbers on restaurant menu sites as you browse, so the menu is just food again.",
     repo: "https://github.com/dpkingii/quietplate",
     tags: ["JavaScript", "Manifest V3", "Vitest"],
-  },
-];
-
-export const leadership: Job[] = [
-  {
-    role: "Director of Education",
-    org: "App Development Club at UMD",
-    location: "College Park, MD",
-    dates: "Jan 2026 – Present",
-    logo: "/logos/adc.png",
-    summary: "Lead an 8-person education team and teach a production-stack curriculum to 45 students a semester.",
-    bullets: [
-      "Lead an 8-person team that scaled recruitment to 500+ applicants a semester by redesigning interviews to evaluate incoming freshmen on interest and commitment rather than prior technical experience.",
-      "Design and teach a production-oriented curriculum in React, FastAPI, MongoDB, and PostgreSQL to 45 students a semester, with 18 advancing through the shadowing program onto active development teams.",
-    ],
-    tags: ["React", "FastAPI", "MongoDB", "PostgreSQL", "Teaching"],
-    link: { label: "Lecture code", href: "https://github.com/dpkingii/bootcamp-lecture-code" },
-  },
-  {
-    role: "Technical Support Engineer",
-    org: "UMD Department of Computer Science",
-    location: "College Park, MD",
-    dates: "May 2024 – Present",
-    logo: "/logos/umd-seal.png",
-    summary: "Implemented LDAP and Red Hat IdM authentication for 80+ faculty across a 1,200+ node network.",
-    bullets: [
-      "Secured centralized authentication for 80+ CS faculty across a 1,200+ node network by implementing LDAP and Red Hat Identity Management, including host-based access policies and provisioning.",
-      "Maintain a 2-hour response SLA while troubleshooting and resolving 12+ technical issues a week across Linux and Windows environments, and write reference documentation for recurring issues.",
-    ],
-    tags: ["Linux", "RHEL", "LDAP", "Red Hat IdM"],
   },
 ];
 

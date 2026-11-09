@@ -9,55 +9,7 @@
   --muted: #6d675e;
   --accent: #8c1b2b;
   --accent-hover: #6b1421;
-  --stars: 0;
 }
-
-/* Light by default. Dark only when the visitor picks it with the toggle. */
-:root[data-theme="dark"] {
-  color-scheme: dark;
-  --bg: #0f0e0d;
-  --card: #1f1d1a;
-  --line: #3a3631;
-  --ink: #ece8e1;
-  --muted: #a39d93;
-  --accent: #e0808c;
-  --accent-hover: #eda5ae;
-  --stars: 1;
-}
-
-/* The night sky: two star tiles at different sizes so the repeat isn't obvious. Only shows in dark. */
-body::before,
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-}
-
-body::before {
-  background-image:
-    radial-gradient(1px 1px at 23px 41px, rgb(255 255 255 / 0.7), transparent),
-    radial-gradient(1px 1px at 141px 87px, rgb(255 255 255 / 0.5), transparent),
-    radial-gradient(1.5px 1.5px at 212px 171px, rgb(255 255 255 / 0.8), transparent),
-    radial-gradient(1px 1px at 297px 33px, rgb(255 255 255 / 0.4), transparent),
-    radial-gradient(1px 1px at 68px 236px, rgb(255 255 255 / 0.6), transparent),
-    radial-gradient(1.5px 1.5px at 331px 262px, rgb(255 214 220 / 0.6), transparent);
-  background-size: 370px 310px;
-  opacity: calc(0.55 * var(--stars));
-}
-
-body::after {
-  background-image:
-    radial-gradient(1px 1px at 97px 129px, rgb(255 255 255 / 0.5), transparent),
-    radial-gradient(1.5px 1.5px at 403px 58px, rgb(255 255 255 / 0.7), transparent),
-    radial-gradient(1px 1px at 251px 389px, rgb(255 255 255 / 0.5), transparent),
-    radial-gradient(1px 1px at 488px 301px, rgb(214 226 255 / 0.6), transparent);
-  background-size: 530px 470px;
-  opacity: calc(0.5 * var(--stars));
-}
-
-@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme inline {
   --color-bg: var(--bg);
@@ -81,27 +33,21 @@ html {
   }
 }
 
-.theme-icon {
-  grid-area: 1 / 1;
-  transition-property: opacity, scale, filter;
-  transition-duration: 300ms;
-  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
-}
-
-:root:not([data-theme="dark"]) .theme-sun,
-:root[data-theme="dark"] .theme-moon {
-  opacity: 0;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  :root:not([data-theme="dark"]) .theme-sun,
-  :root[data-theme="dark"] .theme-moon {
-    scale: 0.25;
-    filter: blur(4px);
-  }
-}
-
 body {
   background: var(--bg);
   color: var(--ink);
+}
+
+@keyframes steam {
+  0% {
+    transform: translateY(4px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
 }

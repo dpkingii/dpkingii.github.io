@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Raleway, Source_Sans_3 } from "next/font/google";
+import ContactBand from "./components/ContactBand";
 import SiteHeader from "./components/SiteHeader";
 import "./globals.css";
 
@@ -25,20 +26,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${raleway.variable} ${sourceSans.variable} antialiased`}
-      suppressHydrationWarning
     >
-      <head>
-        {/* Apply a saved theme choice before first paint so there's no flash of the wrong theme. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`,
-          }}
-        />
-      </head>
       <body className="min-h-screen font-sans">
         {/* Kept outside the pages: Next.js won't scroll to the top on navigation when a page starts with a sticky element. */}
         <SiteHeader />
         {children}
+        <ContactBand />
       </body>
     </html>
   );

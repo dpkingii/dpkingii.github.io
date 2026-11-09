@@ -1,16 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import avatar from "@/public/avatar.jpeg";
 import OutsideWork from "./components/OutsideWork";
-import { ButtonLink, Card, CardHeader, ProjectCard, Tags } from "./components/ProjectCard";
-import {
-  education,
-  experience,
-  leadership,
-  links,
-  projects,
-  skills,
-  type Job,
-} from "./content";
+import { ButtonLink, Card, CardHeader, ProjectCard } from "./components/ProjectCard";
+import { education, links, projects, skills } from "./content";
 
 
 export default function Home() {
@@ -37,27 +30,7 @@ export default function Home() {
             </div>
           </Section>
 
-          <Section id="experience" title="Experience">
-            <Card>
-              <ul className="divide-y divide-line">
-                {experience.map((job) => (
-                  <JobRow key={`${job.org}-${job.role}`} job={job} />
-                ))}
-              </ul>
-            </Card>
-          </Section>
-
-          <Section id="leadership" title="Leadership & Campus Involvement">
-            <Card>
-              <ul className="divide-y divide-line">
-                {leadership.map((job) => (
-                  <JobRow key={`${job.org}-${job.role}`} job={job} />
-                ))}
-              </ul>
-            </Card>
-          </Section>
-
-          <Section id="education" title="Education">
+          <Section id="background" title="Background & Tech Stack">
             <Card>
               <CardHeader
                 title={education.degree}
@@ -81,10 +54,6 @@ export default function Home() {
               </div>
             </Card>
           </Section>
-
-          <footer className="pt-4 pb-8 text-center text-sm text-muted">
-            Lianyu Peng · College Park, MD
-          </footer>
         </main>
       </div>
     </>
@@ -98,7 +67,7 @@ function Sidebar() {
         <Image
           src={avatar}
           alt="Lianyu Peng"
-          className="size-20 shrink-0 rounded-sm outline-1 -outline-offset-1 outline-black/10 dark:outline-white/10 lg:size-24"
+          className="size-20 shrink-0 rounded-sm outline-1 -outline-offset-1 outline-black/10 lg:size-24"
           priority
         />
         <div>
@@ -136,31 +105,30 @@ function About() {
   return (
     <section id="about">
       <Card>
-        <div className="border-b border-line px-6 py-8 sm:px-8">
-          <h2 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
+        <div className="px-6 py-8 sm:px-8 md:py-10">
+          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
             Hi, I&rsquo;m Lianyu. Call me Nick!
           </h2>
-        </div>
-        <div className="max-w-3xl space-y-4 px-6 py-6 leading-relaxed sm:px-8 md:py-8">
-          <p>
+          <p className="mt-5 max-w-3xl text-lg leading-snug sm:text-xl">
             I&rsquo;m a software engineer studying Computer Science at the University of Maryland.
             I keep ending up on the authorization side of things: who is allowed to do what, and
-            how to prove nothing else slipped through. This past summer I interned at Visa,
-            reworking access control for an agentic AI workforce planning app. Before that, I got
-            to work at two startups, Qubi and Chosan.
+            how to prove nothing else slipped through.
           </p>
-          <p>
+          <p className="mt-4 max-w-3xl leading-relaxed">
             On the side, I build frontends for fun, usually for projects that make a daily task a
             little more efficient. Something about turning an idea in my head into an interface
             people can actually use just makes me happy. I also love hearing people&rsquo;s stories,
             often over a pickup game or a good bowl of noodles!
           </p>
-          <p className="text-muted">
-            The best way to reach me is{" "}
-            <a href={links.linkedin} className="text-accent underline-offset-4 hover:text-accent-hover hover:underline">
-              LinkedIn
-            </a>
-            .
+          <p className="mt-6 max-w-3xl border-t border-line pt-5 leading-relaxed text-muted">
+            This past summer I interned at Visa, reworking access control for an agentic AI
+            workforce planning app. Before that, I got to work at two startups, Qubi and Chosan.{" "}
+            <Link
+              href="/experience"
+              className="font-semibold whitespace-nowrap text-accent underline-offset-4 hover:text-accent-hover hover:underline"
+            >
+              Full timeline →
+            </Link>
           </p>
         </div>
       </Card>
@@ -176,48 +144,6 @@ function Section({ id, title, children }: { id: string; title: string; children:
       </h2>
       {children}
     </section>
-  );
-}
-
-function JobRow({ job }: { job: Job }) {
-  return (
-    <li className="px-6 py-6 sm:px-8">
-      <div className="flex gap-4 sm:gap-5">
-        <Image
-          src={job.logo}
-          alt=""
-          width={48}
-          height={48}
-          unoptimized={job.logo.endsWith(".svg")}
-          className="size-11 shrink-0 rounded-sm border border-line bg-white sm:size-12"
-        />
-        <div className="min-w-0 flex-1">
-          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-            <h3 className="font-display text-base font-bold sm:text-lg">{job.role}</h3>
-            <p className="text-sm whitespace-nowrap text-muted">{job.dates}</p>
-          </div>
-          <p className="mt-0.5 text-sm text-muted">
-            {job.org} · {job.location}
-          </p>
-          <p className="mt-3 leading-relaxed">{job.summary}</p>
-          <details className="group mt-3">
-            <summary className="cursor-pointer list-none text-sm font-semibold text-accent hover:text-accent-hover [&::-webkit-details-marker]:hidden">
-              <span className="group-open:hidden">Details +</span>
-              <span className="hidden group-open:inline">Hide details −</span>
-            </summary>
-            <ul className="mt-4 list-disc space-y-3 pl-4 leading-relaxed marker:text-accent">
-              {job.bullets.map((b) => (
-                <li key={b}>{b}</li>
-              ))}
-            </ul>
-            <div className="mt-4 space-y-4">
-              {job.link && <ButtonLink href={job.link.href}>{job.link.label}</ButtonLink>}
-              <Tags tags={job.tags} />
-            </div>
-          </details>
-        </div>
-      </div>
-    </li>
   );
 }
 

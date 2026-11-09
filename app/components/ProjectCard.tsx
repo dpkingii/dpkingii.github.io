@@ -59,18 +59,6 @@ export function CardHeader({
   );
 }
 
-export function Tags({ tags }: { tags: string[] }) {
-  return (
-    <ul className="flex flex-wrap gap-1.5">
-      {tags.map((t) => (
-        <li key={t} className="bg-bg px-2 py-0.5 text-xs text-muted">
-          {t}
-        </li>
-      ))}
-    </ul>
-  );
-}
-
 export function ProjectFrame({
   project: p,
   sizes,
@@ -84,7 +72,7 @@ export function ProjectFrame({
 }) {
   const shot = shots[p.slug];
   const shotClass =
-    "rounded-md shadow-[0_1px_2px_rgb(0_0_0/0.06),0_8px_24px_rgb(0_0_0/0.1)] outline-1 -outline-offset-1 outline-black/10 dark:outline-white/10";
+    "rounded-md shadow-[0_1px_2px_rgb(0_0_0/0.06),0_8px_24px_rgb(0_0_0/0.1)] outline-1 -outline-offset-1 outline-black/10";
   return (
     <a
       href={p.live ?? p.repo}
