@@ -141,7 +141,7 @@ export const projects: Project[] = [
     summary:
       "Searches 46k UMD professor reviews by meaning. Hybrid search plus a cross-encoder reranker raised nDCG@10 from 0.51 (keyword) to 0.74 on 60 graded queries, and fixed negation like \"not much homework\".",
     description:
-      "Finds UMD professors by what students say about them, like \"hard exams but fair\", across 46k PlanetTerp reviews. A cross-encoder reranker reads each query and review together, so it gets negation like \"not much homework\" right.",
+      "Finds UMD professors by what students say about them, like \"hard exams but fair\", across 46k PlanetTerp reviews. A cross-encoder reranker reads each query and review together, so it gets negation like \"not much homework\" right. It can also rank gen-ed courses by their reviews, filtered by category.",
     notes:
       "Runs locally, not deployed. Recall is measured against a pool of results judged from all four modes, so it's relative to what they found. The reranker is CPU bound at about 12 searches/s on a laptop, compared to about 280 for vector search alone.",
     repo: "https://github.com/dpkingii/prof-search",
